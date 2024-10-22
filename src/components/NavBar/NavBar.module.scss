@@ -1,0 +1,25 @@
+@import "../../styles/constants.module.scss";
+
+.navContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navLogo {
+  flex: 1
+}
+.navLinks {
+  flex: 2;
+  gap: 50px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+
+  a {
+    text-decoration: none;
+    color: $font-color-primary;
+  }
+}
