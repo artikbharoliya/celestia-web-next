@@ -1,6 +1,8 @@
 import ControlledCarousel from "@/components/Carousel";
 import HeroSection from "@/components/HeroSection";
 import NavBar from "@/components/NavBar";
+import Products from "@/components/Products";
+import Section from "@/components/Section";
 import { Col, Container, Row } from "react-bootstrap";
 
 export default function Home() {
@@ -15,6 +17,11 @@ export default function Home() {
           <Col md={7}>
             <ControlledCarousel />
           </Col>
+        </Row>
+        <Row>
+          <Section>
+            <Products />
+          </Section>
         </Row>
       </Container>
     </>
