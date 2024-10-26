@@ -1,11 +1,22 @@
+import ControlledCarousel from "@/components/Carousel";
+import HeroSection from "@/components/HeroSection";
 import NavBar from "@/components/NavBar";
+import { Col, Container, Row } from "react-bootstrap";
 
 export default function Home() {
   return (
     <>
-      <div>
-        Home
-      </div>
+      <Container>
+        {/* Make a hero container that has text and a CTA on the left and a carousel on the right */}
+        <Row>
+          <Col md={5}>
+            <HeroSection />
+          </Col>
+          <Col md={7}>
+            <ControlledCarousel />
+          </Col>
+        </Row>
+      </Container>
     </>
   );
 }
