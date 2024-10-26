@@ -1,22 +1,44 @@
 import styles from './NavBar.module.scss';
-import globalStyles from '../../styles/globals.module.scss';
 import Image from 'next/image';
 import Link from 'next/link';
 
+import Container from 'react-bootstrap/Container';
+import Nav from 'react-bootstrap/Nav';
+import Navbar from 'react-bootstrap/Navbar';
+import NavDropdown from 'react-bootstrap/NavDropdown';
+
 export default function NavBar() {
   return (
-    <>
-      <nav className={globalStyles.container}>
-        <div className={`${styles.navContainer}`}>
-          <div className={styles.navLogo}>
-            <Image src={'/assets/Logo.png'} width={208} height={118} />
-          </div>
-          <div className={styles.navLinks}>
+    <Navbar expand="lg" className="bg-body-tertiary">
+      <Container>
+        <Navbar.Brand>
+          <Link href="/">
+            <Image
+              src="/assets/logo.png"
+              alt="Logo"
+              width={200}
+              height={100}
+            />
+          </Link>
+        </Navbar.Brand>
+        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Collapse id="basic-navbar-nav">
+          <Nav className={`ms-auto ${styles.navLinkContainer}`}>
             <Link href="/">Home</Link>
-            <Link href="/contact">Contact Us</Link>
-          </div>
-        </div>
-      </nav>
-    </>
+            <Link href="/projects">Projects</Link>
+            <NavDropdown title="Documents" id="basic-nav-dropdown">
+              <NavDropdown.Item><Link href="/certificates">Certifications</Link></NavDropdown.Item>
+              <NavDropdown.Item><Link href="/certificates">Data Sheets</Link></NavDropdown.Item>
+              <NavDropdown.Item><Link href="/certificates">Installation</Link></NavDropdown.Item>
+            </NavDropdown>
+            <NavDropdown title="Products" id="basic-nav-dropdown">
+              <NavDropdown.Item><Link href="/products/arlies">arlies</Link></NavDropdown.Item>
+              <NavDropdown.Item><Link href="/products/lynx">Lynx</Link></NavDropdown.Item>
+              <NavDropdown.Item><Link href="/products/orion">Orion</Link></NavDropdown.Item>
+            </NavDropdown>
+          </Nav>
+        </Navbar.Collapse>
+      </Container>
+    </Navbar>
   );
 }

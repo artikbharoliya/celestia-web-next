@@ -1,4 +1,15 @@
+@import "~bootstrap/dist/css/bootstrap.min.css";
 body {
   margin: 0;
   font-family: 'Montserrat', sans-serif;
+  --font-color-primary: #7b5d41;
+}
+
+a {
+  text-decoration: none;
+  color: var(--font-color-primary);
+}
+
+.nav-link {
+  color: var(--font-color-primary);
 }
