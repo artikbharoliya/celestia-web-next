@@ -9,7 +9,7 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 
 export default function NavBar() {
   return (
-    <Navbar expand="lg" className="bg-body-tertiary">
+    <Navbar expand="lg">
       <Container>
         <Navbar.Brand>
           <Link href="/">
@@ -36,6 +36,7 @@ export default function NavBar() {
               <NavDropdown.Item><Link href="/products/lynx">Lynx</Link></NavDropdown.Item>
               <NavDropdown.Item><Link href="/products/orion">Orion</Link></NavDropdown.Item>
             </NavDropdown>
+            <Link href="/contact">Contact Us</Link>
           </Nav>
         </Navbar.Collapse>
       </Container>
