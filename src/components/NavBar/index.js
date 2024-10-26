@@ -27,9 +27,9 @@ export default function NavBar() {
             <Link href="/">Home</Link>
             <Link href="/projects">Projects</Link>
             <NavDropdown title="Documents" id="basic-nav-dropdown">
-              <NavDropdown.Item><Link href="/certificates">Certifications</Link></NavDropdown.Item>
-              <NavDropdown.Item><Link href="/certificates">Data Sheets</Link></NavDropdown.Item>
-              <NavDropdown.Item><Link href="/certificates">Installation</Link></NavDropdown.Item>
+              <NavDropdown.Item><Link href="/documents/certificates">Certifications</Link></NavDropdown.Item>
+              <NavDropdown.Item><Link href="/documents/data-sheet">Data Sheets</Link></NavDropdown.Item>
+              <NavDropdown.Item><Link href="/documents/installation">Installation</Link></NavDropdown.Item>
             </NavDropdown>
             <NavDropdown title="Products" id="basic-nav-dropdown">
               <NavDropdown.Item><Link href="/products/arlies">arlies</Link></NavDropdown.Item>
