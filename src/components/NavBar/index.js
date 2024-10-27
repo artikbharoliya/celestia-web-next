@@ -1,42 +1,96 @@
-import styles from './NavBar.module.scss';
-import Image from 'next/image';
-import Link from 'next/link';
+import { RiArrowDownWideLine } from "@remixicon/react";
+import styles from "./NavBar.module.scss";
+import Image from "next/image";
+import Link from "next/link";
 
-import Container from 'react-bootstrap/Container';
-import Nav from 'react-bootstrap/Nav';
-import Navbar from 'react-bootstrap/Navbar';
-import NavDropdown from 'react-bootstrap/NavDropdown';
+import Container from "react-bootstrap/Container";
+import Nav from "react-bootstrap/Nav";
+import Navbar from "react-bootstrap/Navbar";
+import { useEffect, useState } from "react";
+import { NavList, NavType } from "@/common/constant";
 
+const NavIem = ({ item, toggleSubmenu, submenuOpen }) => {
+  if (item.type === NavType.Dropdown) {
+    return (
+      <li
+        key={item.title}
+        className={`${styles.menuItem} ${styles.menuItemHasChildren}`}
+      >
+        <div
+          onClick={(e) => {
+            e.preventDefault();
+            toggleSubmenu(item.title);
+          }}
+          className={`${styles.dropDownItem}`}
+        >
+          {item.title}{" "}
+          <RiArrowDownWideLine
+            className={`${styles.downArrow} ${
+              item.title === submenuOpen ? styles.upArrow : ""
+            }`}
+          />
+        </div>
+        <ul
+          className={`${styles.subMenu} ${
+            item.title === submenuOpen ? styles.active : ""
+          }`}
+        >
+          {item.dropdownList.map((subItem, subIndex) => (
+            <li key={subIndex} className={styles.menuItem}>
+              <Link href={subItem.link}>{subItem.title}</Link>
+            </li>
+          ))}
+        </ul>
+      </li>
+    );
+  } else {
+    return (
+      <li key={item.title} className={styles.menuItem}>
+        <Link href={item.link}>{item.title}</Link>
+      </li>
+    );
+  }
+};
 export default function NavBar() {
+  const [submenuOpen, setSubmenuOpen] = useState(null);
+  const mediaSize = 991;
+
+  const toggleSubmenu = (title) => {
+    setSubmenuOpen((prev) => (prev === title ? null : title));
+  };
+
+  const collapseSubMenu = () => {
+    setSubmenuOpen(null);
+  };
+
+  const resizeFix = () => {
+    if (window.innerWidth > mediaSize) {
+      collapseSubMenu();
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener("resize", resizeFix);
+    return () => window.removeEventListener("resize", resizeFix);
+  }, []);
   return (
     <Navbar expand="lg">
       <Container>
         <Navbar.Brand>
           <Link href="/">
-            <Image
-              src="/assets/logo.png"
-              alt="Logo"
-              width={200}
-              height={100}
-            />
+            <Image src="/assets/logo.png" alt="Logo" width={200} height={100} />
           </Link>
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className={`ms-auto ${styles.navLinkContainer}`}>
-            <Link href="/">Home</Link>
-            <Link href="/projects">Projects</Link>
-            <NavDropdown title="Documents" id="basic-nav-dropdown">
-              <NavDropdown.Item><Link href="/documents/certificates">Certifications</Link></NavDropdown.Item>
-              <NavDropdown.Item><Link href="/documents/data-sheet">Data Sheets</Link></NavDropdown.Item>
-              <NavDropdown.Item><Link href="/documents/installation">Installation</Link></NavDropdown.Item>
-            </NavDropdown>
-            <NavDropdown title="Products" id="basic-nav-dropdown">
-              <NavDropdown.Item><Link href="/products/arlies">arlies</Link></NavDropdown.Item>
-              <NavDropdown.Item><Link href="/products/lynx">Lynx</Link></NavDropdown.Item>
-              <NavDropdown.Item><Link href="/products/orion">Orion</Link></NavDropdown.Item>
-            </NavDropdown>
-            <Link href="/contact">Contact Us</Link>
+            {NavList.map((item) => (
+              <NavIem
+                item={item}
+                toggleSubmenu={toggleSubmenu}
+                submenuOpen={submenuOpen}
+              />
+            ))}
           </Nav>
         </Navbar.Collapse>
       </Container>

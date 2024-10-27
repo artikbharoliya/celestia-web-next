@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@remixicon/react": "^4.4.0",
     "bootstrap": "^5.3.3",
     "next": "14.2.15",
     "react": "^18",
