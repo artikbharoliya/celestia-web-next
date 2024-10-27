@@ -25,15 +25,13 @@ const NavIem = ({ item, toggleSubmenu, submenuOpen }) => {
         >
           {item.title}{" "}
           <RiArrowDownWideLine
-            className={`${styles.downArrow} ${
-              item.title === submenuOpen ? styles.upArrow : ""
-            }`}
+            className={`${styles.downArrow} ${item.title === submenuOpen ? styles.upArrow : ""
+              }`}
           />
         </div>
         <ul
-          className={`${styles.subMenu} ${
-            item.title === submenuOpen ? styles.active : ""
-          }`}
+          className={`${styles.subMenu} ${item.title === submenuOpen ? styles.active : ""
+            }`}
         >
           {item.dropdownList.map((subItem, subIndex) => (
             <li key={subIndex} className={styles.menuItem}>
@@ -84,8 +82,9 @@ export default function NavBar() {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className={`ms-auto ${styles.navLinkContainer}`}>
-            {NavList.map((item) => (
+            {NavList.map((item, index) => (
               <NavIem
+                key={index}
                 item={item}
                 toggleSubmenu={toggleSubmenu}
                 submenuOpen={submenuOpen}
