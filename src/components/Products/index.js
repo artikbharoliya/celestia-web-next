@@ -51,7 +51,7 @@ export default function Products() {
               <Card.Text>
                 {product.description}
               </Card.Text>
-              <Link href={`/${product.slug}`}>
+              <Link href={`products/${product.slug}`}>
                 <Button variant="primary">Learn More</Button>
               </Link>
             </Card.Body>

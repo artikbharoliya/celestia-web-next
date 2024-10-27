@@ -1,0 +1,10 @@
+@import "../../styles/constants.module.scss";
+
+.banner {
+    background-color: $grey-secondary;
+    width: 100%;
+}
+
+.bannerContent{
+    padding: 3rem 0;
+}
