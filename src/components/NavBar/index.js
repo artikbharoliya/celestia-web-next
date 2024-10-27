@@ -76,7 +76,7 @@ export default function NavBar() {
       <Container>
         <Navbar.Brand>
           <Link href="/">
-            <Image src="/assets/logo.png" alt="Logo" width={200} height={100} />
+            <Image src="/assets/Logo.png" alt="Logo" width={200} height={100} />
           </Link>
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
