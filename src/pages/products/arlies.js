@@ -17,8 +17,11 @@ const product = {
 };
 export default function Arlies() {
   return (
-    <TitleSection title={"Wooden ceiling linears"} subTitle={"By Nikolai Bain"}>
-      <Product {...product}/>
+    <TitleSection
+      title={product.name}
+      subTitle={product.material}
+    >
+      <Product {...product} />
     </TitleSection>
   );
 }

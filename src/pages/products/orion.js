@@ -2,22 +2,25 @@ import Product from "@/components/Product";
 import TitleSection from "@/components/TitleSection";
 // Update deatail of product here
 const product = {
-  name: "Arlies",
+  name: "Orion",
   material: "Metal Linear Sq Edge",
   description:
-    "Beautiful metal linear square edge tile. Perfect for any kitchen or bathroom.",
+    "Beautiful versatile linear baffles. Perfect for any kitchen or bathroom.",
   featureList: [
     "High-quality wooden finish",
     "Easy installation and maintenance",
     "Available in multiple finishes",
     "Designed for acoustic efficiency",
   ],
-  image: "arlies.jpg",
-  downloadLink: "arlies",
+  image: "orion.jpg",
+  downloadLink: "orion",
 };
 export default function Orion() {
   return (
-    <TitleSection title={"Wooden ceiling linears"} subTitle={"By Nikolai Bain"}>
+    <TitleSection
+      title={product.name}
+      subTitle={product.material}
+    >
       <Product {...product} />
     </TitleSection>
   );
