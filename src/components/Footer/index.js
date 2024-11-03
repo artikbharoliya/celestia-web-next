@@ -12,7 +12,7 @@ export default function Footer() {
           <Row>
             <Col md={8} xs={12}>
               <Image
-                src="/assets/logo.png"
+                src="/assets/Logo.png"
                 alt="Logo"
                 width={200}
                 height={100}
