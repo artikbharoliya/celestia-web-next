@@ -1,8 +1,7 @@
 import ControlledCarousel from "@/components/Carousel";
 import HeroSection from "@/components/HeroSection";
-import NavBar from "@/components/NavBar";
+import MarketingCopy from "@/components/MarketingCopy";
 import Products from "@/components/Products";
-import Section from "@/components/Section";
 import { Col, Container, Row } from "react-bootstrap";
 
 export default function Home() {
@@ -10,7 +9,7 @@ export default function Home() {
     <>
       <Container>
         {/* Make a hero container that has text and a CTA on the left and a carousel on the right */}
-        <Row>
+        <Row style={{ marginTop: "40px", marginBottom: "40px" }}>
           <Col md={5}>
             <HeroSection />
           </Col>
@@ -18,6 +17,7 @@ export default function Home() {
             <ControlledCarousel />
           </Col>
         </Row>
+        <MarketingCopy />
         <Products />
       </Container>
     </>

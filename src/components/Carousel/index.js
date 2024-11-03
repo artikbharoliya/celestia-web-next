@@ -13,7 +13,7 @@ function ControlledCarousel() {
     <Carousel activeIndex={index} onSelect={handleSelect}>
       <Carousel.Item>
         <Image
-          src={'/assets/carousel/1.jpeg'}
+          src={'/assets/carousel/2.jpeg'}
           alt="First slide"
           width={800}
           height={600}
@@ -25,7 +25,7 @@ function ControlledCarousel() {
       </Carousel.Item>
       <Carousel.Item>
         <Image
-          src={'/assets/carousel/2.jpeg'}
+          src={'/assets/carousel/1.jpeg'}
           alt="First slide"
           width={800}
           height={600}
@@ -37,7 +37,7 @@ function ControlledCarousel() {
       </Carousel.Item>
       <Carousel.Item>
         <Image
-          src={'/assets/carousel/4.jpeg'}
+          src={'/assets/carousel/3.jpeg'}
           alt="First slide"
           width={800}
           height={600}
