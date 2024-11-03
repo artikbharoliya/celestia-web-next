@@ -1,8 +1,13 @@
+@import "../../styles/constants.module.scss";
+
+
 .copy {
   text-align: justify;
-  padding: 24px 48px;
+  padding: 24px 48px 24px 36px;
+  border-left: 2px solid $font-color-primary;
 }
 
 .copyContainer {
   margin: 40px 0;
+  
 }
