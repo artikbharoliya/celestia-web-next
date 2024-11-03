@@ -44,17 +44,17 @@ export const NavList = [
     type: NavType.Dropdown,
     dropdownList: projectDropdownList,
   },
-  {
-    title: "Resources",
-    link: "",
-    type: NavType.Dropdown,
-    dropdownList: documentDropdownList,
-  },
-  {
-    title: "Projects",
-    link: "",
-    type: NavType.None,
-  },
+  // {
+  //   title: "Resources",
+  //   link: "",
+  //   type: NavType.Dropdown,
+  //   dropdownList: documentDropdownList,
+  // },
+  // {
+  //   title: "Projects",
+  //   link: "",
+  //   type: NavType.None,
+  // },
   {
     title: "Contact Us",
     link: "/contact",
