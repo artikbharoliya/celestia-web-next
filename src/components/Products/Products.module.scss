@@ -1,0 +1,22 @@
+.productContainer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 80px 0;
+}
+
+.productRow {
+  width: 100%;
+
+}
+
+.productCard {
+  height: 100%;
+}
+
+.productTitle {
+  align-self: flex-start;
+  text-align: left;
+}

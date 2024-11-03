@@ -18,11 +18,7 @@ export default function Home() {
             <ControlledCarousel />
           </Col>
         </Row>
-        <Row>
-          <Section>
-            <Products />
-          </Section>
-        </Row>
+        <Products />
       </Container>
     </>
   );

@@ -22,20 +22,15 @@ const projectDropdownList = [
 ];
 const documentDropdownList = [
   {
-    title: "Certification",
-    link: "/documents/certificates",
+    title: "Downloads",
+    link: "/downloads",
     type: NavType.None,
   },
   {
-    title: "Datasheets",
-    link: "/documents/data-sheet",
+    title: "Inspiration",
+    link: "/inspiration",
     type: NavType.None,
-  },
-  {
-    title: "Installation",
-    link: "/documents/installation",
-    type: NavType.None,
-  },
+  }
 ];
 export const NavList = [
   {
@@ -50,7 +45,7 @@ export const NavList = [
     dropdownList: projectDropdownList,
   },
   {
-    title: "Downloads",
+    title: "Resources",
     link: "",
     type: NavType.Dropdown,
     dropdownList: documentDropdownList,
