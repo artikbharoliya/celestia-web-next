@@ -24,8 +24,10 @@ export default function Home() {
       </Container>
       <Container fluid>
         <TitleSection title={"Inspirations"} />
+      </Container>
+      <Container>
         <Row className="justify-content-md-center py-5">
-          <Col md={6}>
+          <Col md={7}>
             <Inspirations />
           </Col>
         </Row>
