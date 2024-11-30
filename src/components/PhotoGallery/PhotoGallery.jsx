@@ -6,7 +6,7 @@ import StackGrid from 'react-stack-grid';
 export function PhotoGallery({ photos }) {
   return (
     <div className="py-5">
-      <StackGrid columnWidth={600}>
+      <StackGrid columnWidth={"40%"}>
         {photos?.map((photo, index) => {
           return (
             <>
