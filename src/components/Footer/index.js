@@ -22,7 +22,7 @@ export default function Footer() {
               <Stack gap={3}>
                 <Link href="/">Home</Link>
                 <Link href="/contact">Contact Us</Link>
-                <Link href="/about">About Us</Link>
+                {/* <Link href="/about">About Us</Link> */}
               </Stack>
             </Col>
           </Row>

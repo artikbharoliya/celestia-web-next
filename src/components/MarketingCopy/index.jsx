@@ -3,7 +3,7 @@ import styles from './MarketingCopy.module.scss';
 
 export default function MarketingCopy() {
   return (
-    <Row>
+    <Row className="pb-5 pt-2">
       <Col md={12} className={styles.copyContainer}>
         <h1 className={styles.title}>Who are we!</h1>
         <h6 className={styles.copy}>

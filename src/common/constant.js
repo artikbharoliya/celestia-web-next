@@ -50,11 +50,11 @@ export const NavList = [
   //   type: NavType.Dropdown,
   //   dropdownList: documentDropdownList,
   // },
-  // {
-  //   title: "Projects",
-  //   link: "",
-  //   type: NavType.None,
-  // },
+  {
+    title: "Projects",
+    link: "/projects",
+    type: NavType.None,
+  },
   {
     title: "Contact Us",
     link: "/contact",

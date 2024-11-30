@@ -1,8 +1,9 @@
 @import "~bootstrap/dist/css/bootstrap.min.css";
 body {
   margin: 0;
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
   --font-color-primary: #7b5d41;
+  padding: 0;
 }
 
 a {
@@ -10,7 +11,7 @@ a {
   color: var(--font-color-primary);
 }
 
-.btn-primary  {
+.btn-primary {
   background-color: var(--font-color-primary);
   color: white;
 }
