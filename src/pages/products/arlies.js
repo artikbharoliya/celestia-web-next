@@ -36,7 +36,7 @@ const product = {
     "CTM-6-XXX - 6\"H x 120\" L - Cloud Trim, STD Colors, 10 Pc/Ctn",
     "CC - Cloud Trim Connector Clip, 10 Pc/Ctn"
   ],
-  image: "arlies.jpg",
+  image: "1.jpg",
   downloadLink: "arlies",
 };
 export default function Arlies() {

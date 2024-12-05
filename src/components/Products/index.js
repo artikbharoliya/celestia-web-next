@@ -11,7 +11,7 @@ export default function Products() {
       name: "Arlies",
       material: "Metal Linear Sq Edge",
       description: "Beautiful metal linear square edge tile. Perfect for any kitchen or bathroom.",
-      image: "arlies.jpg",
+      image: "1.jpg",
       slug: "arlies",
     },
     {
@@ -19,7 +19,7 @@ export default function Products() {
       name: "Lynx",
       material: "Metal Linear Circular Edge",
       description: "Beautiful metal linear circular edge tile. Perfect for any kitchen or bathroom.",
-      image: "lynx.jpg",
+      image: "2.jpg",
       slug: "lynx",
     },
     {
@@ -27,7 +27,7 @@ export default function Products() {
       name: "Orion",
       material: "Versatile Linear Baffles",
       description: "Beautiful versatile linear baffles. Perfect for any kitchen or bathroom.",
-      image: "orion.jpg",
+      image: "3.jpg",
       slug: "orion",
     }
   ]

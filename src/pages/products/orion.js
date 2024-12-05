@@ -12,7 +12,7 @@ const product = {
     "Available in multiple finishes",
     "Designed for acoustic efficiency",
   ],
-  image: "orion.jpg",
+  image: "3.jpg",
   downloadLink: "orion",
   relatedAccessories: [
     "OS-112BF-1-120 - 1/2\"D x 1\"W Linear Baffle",

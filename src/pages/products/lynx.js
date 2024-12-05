@@ -16,7 +16,7 @@ const product = {
     "Planks can be installed on walls and sloped setting.",
     "Planks are made from 22 gauge Aluminum."
   ],
-  image: "lynx.jpg",
+  image: "2.jpg",
   downloadLink: "Lynx",
   relatedAccessories: [
     "LS-3LP - 3 In Linear Plank, 8, 10, 12 Feet Lengths",
