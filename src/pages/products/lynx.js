@@ -17,7 +17,6 @@ const product = {
     "Planks are made from 22 gauge Aluminum."
   ],
   image: "2.jpg",
-  downloadLink: "Lynx",
   relatedAccessories: [
     "LS-3LP - 3 In Linear Plank, 8, 10, 12 Feet Lengths",
     "LS-4LP - 4 In Linear Plank, 8, 10, 12 Feet Lengths",
@@ -36,6 +35,9 @@ const product = {
     "CTM-6-XXX - 6\"H x 120\" L - Cloud Trim, STD Colors, 10 Pc/Ctn",
     "CC - Cloud Trim Connector Clip, 10 Pc/Ctn"
   ],
+  installLayout: "/assets/downloads/LayoutDrawing/Lynx-Layout.pdf",
+  dimensionDrawings: "/assets/downloads/DimensionDrawings/Lynx-Dimensions.pdf",
+  dataSheet: "/assets/downloads/DataSheets/Lynx.pdf",
 };
 export default function Lynx() {
   return (

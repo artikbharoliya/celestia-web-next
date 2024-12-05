@@ -7,8 +7,10 @@ export default function Product({
   material,
   description,
   featureList,
-  donwloadLink,
-  relatedAccessories
+  installLayout,
+  dimensionDrawings,
+  relatedAccessories,
+  dataSheet
 }) {
   console.log(featureList);
 
@@ -34,18 +36,24 @@ export default function Product({
         >
           <h1 className="mb-3">Product Description</h1>
           <p className="mb-4">{description}</p>
-          <Button variant="primary" className="me-auto mb-3">
-            Download Data Sheet
-          </Button>
-          <Button variant="primary" className="me-auto mb-3">
-            Download Install Manual
-          </Button>
-          <Button variant="primary" className="me-auto mb-3">
-            Metal Perforations Option
-          </Button>
-          <Button variant="primary" className="me-auto mb-3">
+          <a download href={dataSheet}>
+            <Button variant="primary" className="me-auto mb-3">
+              Download Data Sheet
+            </Button>
+          </a>
+          <a download href={installLayout}>
+            <Button variant="primary" className="me-auto mb-3">
+              Install Layout
+            </Button>
+          </a>
+          <a download href={dimensionDrawings}>
+            <Button variant="primary" className="me-auto mb-3">
+              Dimension Drawings
+            </Button>
+          </a>
+          {/* <Button variant="primary" className="me-auto mb-3">
             Color and Wood Finish Options
-          </Button>
+          </Button> */}
         </Col>
       </StyledRow>
       <StyledRow className="align-items-center mt-4" isLastRow>

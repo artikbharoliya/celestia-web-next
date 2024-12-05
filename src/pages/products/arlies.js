@@ -37,7 +37,9 @@ const product = {
     "CC - Cloud Trim Connector Clip, 10 Pc/Ctn"
   ],
   image: "1.jpg",
-  downloadLink: "arlies",
+  installLayout: "/assets/downloads/LayoutDrawing/Arlies-Layout.pdf",
+  dimensionDrawings: "/assets/downloads/DimensionDrawings/Arlies-Dimensions.pdf",
+  dataSheet: "/assets/downloads/DataSheets/Arlies.pdf",
 };
 export default function Arlies() {
   return (

@@ -13,7 +13,6 @@ const product = {
     "Designed for acoustic efficiency",
   ],
   image: "3.jpg",
-  downloadLink: "orion",
   relatedAccessories: [
     "OS-112BF-1-120 - 1/2\"D x 1\"W Linear Baffle",
     "OS-212BD0-XXX-120 - 1/2\"D x 2\"W Linear Baffle",
@@ -55,6 +54,9 @@ const product = {
     "CTM-6-XXX - 6\"H x 120\" L - Cloud Trim, STD Colors, 10 Pc/Ctn",
     "CC - Cloud Trim Connector Clip, 10 Pc/Ctn"
   ],
+  installLayout: "/assets/downloads/LayoutDrawing/Orion-Layout.JPG",
+  dimensionDrawings: "/assets/downloads/DimensionDrawings/Orion-Dimensions.pdf",
+  dataSheet: "/assets/downloads/DataSheets/Orion.pdf",
 };
 export default function Orion() {
   return (
