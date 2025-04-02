@@ -29,6 +29,14 @@ export default function Products() {
       description: "Beautiful versatile linear baffles. Perfect for any kitchen or bathroom.",
       image: "3.jpg",
       slug: "orion",
+    },
+    {
+      id: 4,
+      name: "Nexis",
+      material: "V-Groove Metal linear",
+      description: "Beautiful versatile linear baffles. Perfect for any kitchen or bathroom.",
+      image: "4.jpg",
+      slug: "nexis",
     }
   ]
 
@@ -38,14 +46,14 @@ export default function Products() {
         <h1 className={styles.productTitle}>Products</h1>
         <Row className={styles.productRow}>
           {products.map((product, index) => (
-            <Col md={4} xs={12} className="my-3" key={index}>
+            <Col md={6} xs={12} className="my-3" key={index}>
               <Card key={product.id} className={styles.productCard}>
                 <Ratio aspectRatio={"4x3"}>
                   <Image
                     src={`/assets/products/${product.image}`}
                     alt={product.name}
-                    height={300}
-                    width={400}
+                    height={270}
+                    width={360}
                   />
                 </Ratio>
                 <Card.Body className="mt-auto">
