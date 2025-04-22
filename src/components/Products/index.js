@@ -34,7 +34,7 @@ export default function Products() {
       id: 4,
       name: "Nexis",
       material: "V-Groove Metal linear",
-      description: "Beautiful versatile linear baffles. Perfect for any kitchen or bathroom.",
+      description: "Metal Linear with V-Groove Revel. Perfect for Interior or Exterior Installation",
       image: "4.jpg",
       slug: "nexis",
     }

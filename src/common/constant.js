@@ -19,6 +19,11 @@ const projectDropdownList = [
     link: "/products/orion",
     type: NavType.None,
   },
+  {
+    title: "Nexis",
+    link: "/products/nexis",
+    type: NavType.None,
+  },
 ];
 const documentDropdownList = [
   {
