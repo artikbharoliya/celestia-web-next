@@ -36,7 +36,11 @@ const product = {
     "CC - Cloud Trim Connector Clip, 10 Pc/Ctn"
   ],
   installLayout: "/assets/downloads/LayoutDrawing/Lynx-Layout.pdf",
-  dimensionDrawings: "/assets/downloads/DimensionDrawings/Lynx-Dimensions.pdf",
+  dimensionDrawings: [
+    "/assets/downloads/DimensionDrawings/LYNX - Dimensional Drawing -12-5-2024.pdf",
+    "/assets/downloads/DimensionDrawings/LYNX - METAL LINEAR SYSTEM ROUND - updated.pdf",
+    "/assets/downloads/DimensionDrawings/LYNX - Related Accessories.pdf"
+  ],
   dataSheet: "/assets/downloads/DataSheets/Lynx.pdf",
 };
 export default function Lynx() {
