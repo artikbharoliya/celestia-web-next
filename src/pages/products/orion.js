@@ -55,7 +55,15 @@ const product = {
     "CC - Cloud Trim Connector Clip, 10 Pc/Ctn"
   ],
   installLayout: "/assets/downloads/LayoutDrawing/Orion-Layout.JPG",
-  dimensionDrawings: "/assets/downloads/DimensionDrawings/Orion-Dimensions.pdf",
+  dimensionDrawings: [
+    "/assets/downloads/DimensionDrawings/ORIAN - Dimensional Drawing - 12-5-2024.pdf",
+    "/assets/downloads/DimensionDrawings/ORIAN - METAL BAFFLE SYSTEM (BUTT JOINT).pdf",
+    "/assets/downloads/DimensionDrawings/ORIAN - Related Accessorie.pdf",
+    "/assets/downloads/DimensionDrawings/ORIAN 3D.pdf",
+    "/assets/downloads/DimensionDrawings/Orian Butt Joint Detail.pdf",
+    "/assets/downloads/DimensionDrawings/Orion - Related Accessories.pdf",
+    "/assets/downloads/DimensionDrawings/ORION METAL LINEAR END CAP DETAIL.pdf",
+  ],
   dataSheet: "/assets/downloads/DataSheets/Orion.pdf",
 };
 export default function Orion() {
