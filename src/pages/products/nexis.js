@@ -38,7 +38,11 @@ const product = {
     "CTM-6 - 6\" L-Cloud Trim",
     "CC - Cloud Trim Clip"
   ],
-  dimensionDrawings: "/assets/downloads/DimensionDrawings/Nexis-Dimensions.pdf",
+  dimensionDrawings: [
+    "/assets/downloads/DimensionDrawings/NEXIS - Related Accessories 1.pdf",
+    "/assets/downloads/DimensionDrawings/NEXIS - V GROVE METAL LINEAR SYSTEM.pdf",
+
+  ],
   dataSheet: "/assets/downloads/DataSheets/Nexis.pdf",
 };
 export default function Lynx() {
