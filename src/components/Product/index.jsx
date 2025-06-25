@@ -1,6 +1,10 @@
 import StyledRow from "@/components/StyledRow";
 import Image from "next/image";
-import { Col, Ratio, Button } from "react-bootstrap";
+import { useState } from "react";
+import { Col, Ratio, Button, Modal } from "react-bootstrap";
+import FileIcon from "/public/assets/ico/file-download.svg";
+import styles from './Product.module.scss';
+
 export default function Product({
   name,
   image,
@@ -12,10 +16,34 @@ export default function Product({
   relatedAccessories,
   dataSheet
 }) {
-  console.log(featureList);
 
+  const [showModal, setShowModal] = useState(false);
   return (
     <>
+      <Modal show={showModal} onHide={() => setShowModal(false)}>
+        <Modal.Header closeButton>
+          <Modal.Title>Drawings</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          {Array.isArray(dimensionDrawings) && dimensionDrawings.length > 0 ? (
+            <ul>
+              {dimensionDrawings.map((drawing) => {
+                const fileName = drawing.split('/').pop();
+                return (
+                  <li key={drawing} className={styles.downloadLink}>
+                    <Image src={FileIcon} alt="Download file icon" width={18} height={18} />
+                    <a href={drawing} download target="_blank" rel="noopener noreferrer">
+                      {fileName}
+                    </a>
+                  </li>
+                );
+              })}
+            </ul>
+          ) : (
+            <p>No dimension drawings available.</p>
+          )}
+        </Modal.Body>
+      </Modal>
       <StyledRow>
         <Col xs={12} md={6} className="mb-3 mb-md-0">
           <Ratio aspectRatio="4x3">
@@ -51,15 +79,24 @@ export default function Product({
             </a>
           )}
           {dimensionDrawings && (
-            <a download href={dimensionDrawings}>
-              <Button variant="primary" className="me-auto mb-3">
-                Dimension Drawings
-              </Button>
-            </a>
+            <Button variant="primary" className="me-auto mb-3" onClick={() => {
+              if (Array.isArray(dimensionDrawings)) {
+                setShowModal(true);
+                console.log(dimensionDrawings);
+                console.log("Clicked Dimension Drawings Button");
+              } else {
+                console.log("Single file dimensionDrawings");
+                const link = document.createElement('a');
+                link.href = dimensionDrawings;
+                link.download = dimensionDrawings.split('/').pop();
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+              }
+            }}>
+              Dimension Drawings
+            </Button>
           )}
-          {/* <Button variant="primary" className="me-auto mb-3">
-            Color and Wood Finish Options
-          </Button> */}
         </Col>
       </StyledRow>
       <StyledRow className="align-items-center mt-4" isLastRow>

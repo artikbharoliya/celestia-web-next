@@ -1,0 +1,9 @@
+.downloadLink {
+  list-style: none;
+  margin-block: 12px;
+
+  & > img {
+    margin-right: 8px;
+    color: #7b5d41;
+  }
+}

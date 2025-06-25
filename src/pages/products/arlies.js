@@ -38,7 +38,12 @@ const product = {
   ],
   image: "1.jpg",
   installLayout: "/assets/downloads/LayoutDrawing/Arlies-Layout.pdf",
-  dimensionDrawings: "/assets/downloads/DimensionDrawings/Arlies-Dimensions.pdf",
+  dimensionDrawings: [
+    "/assets/downloads/DimensionDrawings/ARLIES - Dimensional Drawing - 12-5-2024.pdf",
+    "/assets/downloads/DimensionDrawings/ARLIES - METAL LINEAR SYSTEM SQUARE.pdf",
+    "/assets/downloads/DimensionDrawings/ARLIES - Related Accessories.pdf",
+    "/assets/downloads/DimensionDrawings/ARLIES - ARLIES CLOUD TRIM DETAIL.pdf",
+  ],
   dataSheet: "/assets/downloads/DataSheets/Arlies.pdf",
 };
 export default function Arlies() {
