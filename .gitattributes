@@ -1,0 +1,16 @@
+# Enforce consistent line endings across OS
+* text=auto eol=lf
+
+# Treat common binary types correctly (no normalization)
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.webp binary
+*.svg text eol=lf
+*.ico binary
+*.pdf binary
+*.woff binary
+*.woff2 binary
+*.ttf binary
+
