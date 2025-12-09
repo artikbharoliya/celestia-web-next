@@ -20,6 +20,7 @@ export function PhotoGallery({ photos }) {
                   sizes='100vw'
                   height={0}
                   width={0}
+                  alt=""
                 />
               </div>
             </>

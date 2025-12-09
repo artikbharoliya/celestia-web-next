@@ -1,4 +1,5 @@
 
+import Layout from '@/components/Layout';
 import TitleSection from '@/components/TitleSection';
 import { useState } from 'react';
 import { Form, Button, Container, Row, Col, Alert } from 'react-bootstrap';
@@ -98,4 +99,12 @@ export default function ContactForm() {
       </Container>
     </>
   );
+}
+
+ContactForm.getLayout = function getLayout(page) {
+  return (
+    <Layout>
+      {page}
+    </Layout>
+  )
 }

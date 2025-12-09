@@ -1,6 +1,7 @@
 import ControlledCarousel from "@/components/Carousel";
 import HeroSection from "@/components/HeroSection";
 import Inspirations from "@/components/Inspirations";
+import Layout from "@/components/Layout";
 import MarketingCopy from "@/components/MarketingCopy";
 import Products from "@/components/Products";
 import TitleSection from "@/components/TitleSection";
@@ -34,4 +35,18 @@ export default function Home() {
       </Container>
     </>
   );
+}
+
+
+Home.getLayout = function getLayout(page) {
+  return (
+    <Layout
+      pageTitle="Celestia Designs | Built to last"
+      description="Since our inception in 2007, Celestia design has been dedicated to crafting products that embody the beauty and complexity of the universe."
+      ogImage="/assets/Logo.png"
+      ogUrl="https://www.celestiadesign.com/"
+    >
+      {page}
+    </Layout>
+  )
 }
