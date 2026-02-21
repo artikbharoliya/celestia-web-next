@@ -46,7 +46,7 @@ export default function Products() {
         <h1 className={styles.productTitle}>Products</h1>
         <Row className={styles.productRow}>
           {products.map((product, index) => (
-            <Col md={6} xs={12} className="my-3" key={index}>
+            <Col className={`my-3 ${styles.productCardContainer}`} key={index}>
               <Card key={product.id} className={styles.productCard}>
                 <Ratio aspectRatio={"4x3"}>
                   <Image

@@ -8,3 +8,9 @@
 .bannerContent{
     padding: 3rem 0;
 }
+
+.description {
+    @media (max-width: $bp-sm) {
+    margin-top: 20px;
+    }
+}
