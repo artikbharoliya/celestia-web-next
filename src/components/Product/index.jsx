@@ -1,7 +1,8 @@
 import StyledRow from "@/components/StyledRow";
 import Image from "next/image";
 import { useState } from "react";
-import { Col, Ratio, Button, Modal } from "react-bootstrap";
+import { Col, Modal } from "react-bootstrap";
+import Button from "@/components/Button";
 import FileIcon from "/public/assets/ico/file-download.svg";
 import styles from './Product.module.scss';
 
@@ -44,93 +45,111 @@ export default function Product({
           )}
         </Modal.Body>
       </Modal>
-      <StyledRow>
-        <Col xs={12} md={6} className="mb-3 mb-md-0">
-          <Ratio aspectRatio="4x3">
-            <Image
-              src={`/assets/products/${image}`}
-              alt={"arlies"}
-              height={300}
-              width={400}
-              className="rounded"
-            />
-          </Ratio>
+      <StyledRow className={styles.heroRow}>
+        <Col xs={12} md={5} className={styles.imageCol}>
+          <div className={styles.imageCard}>
+            <div className={styles.imageFrame}>
+              <Image
+                src={`/assets/products/${image}`}
+                alt={name}
+                fill
+                sizes="(max-width: 768px) 100vw, 50vw"
+                className={styles.productImage}
+              />
+            </div>
+          </div>
         </Col>
-
-        <Col
-          xs={12}
-          md={6}
-          className="d-flex flex-column  align-items-center align-items-md-start text-center text-md-start"
-        >
-          <h1 className="mb-3">Product Description</h1>
-          <p className="mb-4">{description}</p>
-          {dataSheet && (
-            <a download href={dataSheet}>
-              <Button variant="primary" className="me-auto mb-3">
-                Download Data Sheet
+        <Col xs={12} md={7} className={styles.contentCol}>
+          <div className={styles.meta}>
+            <h2 className={styles.productName}>{name}</h2>
+            {material && <div className={styles.material}>{material}</div>}
+          </div>
+          <p className={styles.descriptionText}>{description}</p>
+          <div className={styles.actionStack}>
+            {dataSheet && (
+              <a download href={dataSheet} className={styles.actionLink}>
+                <Button variant="primary" className={styles.actionButton}>
+                  Download Data Sheet
+                </Button>
+              </a>
+            )}
+            {installLayout && (
+              <a download href={installLayout} className={styles.actionLink}>
+                <Button variant="primary" className={styles.actionButton}>
+                  Install Layout
+                </Button>
+              </a>
+            )}
+            {dimensionDrawings && (
+              <Button
+                variant="primary"
+                className={styles.actionButton}
+                onClick={() => {
+                  if (Array.isArray(dimensionDrawings)) {
+                    setShowModal(true);
+                    console.log(dimensionDrawings);
+                    console.log("Clicked Dimension Drawings Button");
+                  } else {
+                    console.log("Single file dimensionDrawings");
+                    const link = document.createElement('a');
+                    link.href = dimensionDrawings;
+                    link.download = dimensionDrawings.split('/').pop();
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+                  }
+                }}
+              >
+                Dimension Drawings
               </Button>
-            </a>
-          )}
-          {installLayout && (
-            <a download href={installLayout}>
-              <Button variant="primary" className="me-auto mb-3">
-                Install Layout
-              </Button>
-            </a>
-          )}
-          {dimensionDrawings && (
-            <Button variant="primary" className="me-auto mb-3" onClick={() => {
-              if (Array.isArray(dimensionDrawings)) {
-                setShowModal(true);
-                console.log(dimensionDrawings);
-                console.log("Clicked Dimension Drawings Button");
-              } else {
-                console.log("Single file dimensionDrawings");
-                const link = document.createElement('a');
-                link.href = dimensionDrawings;
-                link.download = dimensionDrawings.split('/').pop();
-                document.body.appendChild(link);
-                link.click();
-                document.body.removeChild(link);
-              }
-            }}>
-              Dimension Drawings
-            </Button>
-          )}
+            )}
+          </div>
         </Col>
       </StyledRow>
-      <StyledRow className="align-items-center mt-4" isLastRow>
+      <StyledRow className={styles.featuresRow} isLastRow>
         <Col
           xs={12}
-          md={7}
-          className="d-flex flex-column justify-content-center align-items-center align-items-md-start text-center text-md-start"
+          md={10}
+          className={styles.featuresCol}
         >
           {featureList.length > 0 && (
-            <>
-              <h5>Product features:</h5>
-              <ul className="text-start text-md-start">
+            <section className={styles.featuresPanel} aria-label="Product features">
+              <div className={styles.featuresHeader}>
+                <p className={styles.featuresEyebrow}>{name}</p>
+                <h5 className={styles.featuresTitle}>Features</h5>
+              </div>
+              <ul className={styles.featuresTimeline}>
                 {featureList.map((feature) => (
-                  <li key={feature}>{feature}</li>
+                  <li key={feature} className={styles.featureItem}>
+                    <span className={styles.featureDot} aria-hidden="true" />
+                    <span className={styles.featureText}>{feature}</span>
+                  </li>
                 ))}
               </ul>
-            </>
+            </section>
           )}
         </Col>
       </StyledRow>
-      <StyledRow className="align-items-center mt-4" isLastRow>
+      <StyledRow className={styles.accessoriesRow} isLastRow>
         <Col
           xs={12}
-          md={7}
-          className="d-flex flex-column justify-content-center align-items-center align-items-md-start text-center text-md-start"
+          md={10}
+          className={styles.accessoriesCol}
         >
-          <h5>Related Accessories:</h5>
-          <ul>
-            {
-              relatedAccessories.map((accessory) => (
-                <li key={accessory}>{accessory}</li>
-              ))
-            }
-          </ul>
+          <section className={styles.accessoriesPanel} aria-label="Related accessories">
+            <div className={styles.accessoriesHeader}>
+              <p className={styles.accessoriesEyebrow}>{name}</p>
+              <h5 className={styles.accessoriesTitle}>Related Accessories</h5>
+            </div>
+            <div className={styles.accessoriesGrid}>
+              {relatedAccessories.map((accessory) => (
+                <div key={accessory} className={styles.accessoryChip}>
+                  <span className={styles.accessoryMarker} aria-hidden="true" />
+                  <span className={styles.accessoryText}>{accessory}</span>
+                </div>
+              ))}
+            </div>
+          </section>
         </Col>
       </StyledRow>
     </>

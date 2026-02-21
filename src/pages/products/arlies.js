@@ -51,6 +51,7 @@ export default function Arlies() {
     <TitleSection
       title={product.name}
       subTitle={product.material}
+      description={product.description}
     >
       <Product {...product} />
     </TitleSection>

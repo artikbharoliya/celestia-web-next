@@ -7,7 +7,7 @@ export default function TitleSection({ title, subTitle, children }) {
       <div className={`${style.banner}`}>
         <Container>
           <Row className={`${style.bannerContent}`}>
-            <Col xl={8}>
+            <Col xl={6}>
               <div className="text-truncate h1">{title}</div>
               {subTitle && (<div className="text-truncate text-muted h5">{subTitle}</div>)}
             </Col>
