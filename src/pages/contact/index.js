@@ -2,7 +2,8 @@
 import Layout from '@/components/Layout';
 import TitleSection from '@/components/TitleSection';
 import { useState } from 'react';
-import { Form, Button, Container, Row, Col, Alert } from 'react-bootstrap';
+import { Form, Container, Row, Col, Alert } from 'react-bootstrap';
+import Button from '@/components/Button';
 
 export default function ContactForm() {
   const [formData, setFormData] = useState({

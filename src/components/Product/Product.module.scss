@@ -1,3 +1,127 @@
+@import "../../styles/constants.module.scss";
+
+.heroRow {
+  background: linear-gradient(135deg, #ffffff 0%, #faf8f6 100%);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  border-radius: 18px;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+}
+
+.imageCol {
+  padding: 24px 0 24px 24px;
+}
+
+.imageCard {
+  background-color: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  border-radius: 16px;
+  padding: 12px;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.imageFrame {
+  position: relative;
+  width: 100%;
+  height: auto;
+  min-height: 320px;
+  aspect-ratio: 4 / 3;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.productImage {
+  object-fit: cover;
+  object-position: center;
+}
+
+.contentCol {
+  padding: 32px 32px 32px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.meta {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.productName {
+  font-size: clamp(1.6rem, 2.2vw, 2.2rem);
+  margin: 0;
+  color: $black-color-light;
+}
+
+.material {
+  font-size: 0.95rem;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: $font-color-primary;
+  font-weight: 600;
+}
+
+.descriptionText {
+  color: rgba(0, 0, 0, 0.7);
+  line-height: 1.6;
+  margin: 0;
+  max-width: 36rem;
+}
+
+.actionStack {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+  max-width: 280px;
+}
+
+.actionLink {
+  display: block;
+  width: 100%;
+}
+
+.actionButton {
+  width: 100%;
+  text-align: center;
+  padding: 8px 14px;
+  border-radius: 6px;
+}
+
+@media (max-width: $bp-md) {
+  .imageCol {
+    padding: 20px 20px 0 20px;
+  }
+
+  .contentCol {
+    padding: 20px;
+  }
+
+  .actionStack {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: $bp-sm) {
+  .imageFrame {
+    min-height: 220px;
+  }
+
+  .productImage {
+    object-fit: contain;
+    object-position: center;
+    background-color: #ffffff;
+  }
+
+  .contentCol {
+    padding: 16px;
+  }
+}
+
 .downloadLink {
   list-style: none;
   margin-block: 12px;

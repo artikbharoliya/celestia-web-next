@@ -1,4 +1,5 @@
-import { Button, Card, Col, Ratio, Row } from "react-bootstrap";
+import { Card, Col, Ratio, Row } from "react-bootstrap";
+import Button from "@/components/Button";
 import Image from "next/image";
 import Link from "next/link";
 import styles from "./Products.module.scss";

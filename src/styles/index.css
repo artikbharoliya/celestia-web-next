@@ -12,8 +12,18 @@ a {
 }
 
 .btn-primary {
-  background-color: var(--font-color-primary);
-  color: white;
+  /* Bootstrap button color overrides */
+  --bs-btn-color: #fff;
+  --bs-btn-bg: #7b5d41;
+  --bs-btn-border-color: #6d4f33;
+  --bs-btn-hover-color: #fff;
+  --bs-btn-hover-bg: #98795d;
+  --bs-btn-hover-border-color: #98795d;
+  --bs-btn-active-bg: #6d4f33;
+  --bs-btn-active-border-color: #6d4f33;
+  /* --bs-btn-disabled-color: ;
+  --bs-btn-disabled-bg: ;
+  --bs-btn-disabled-border-color: ; */
 }
 .nav-link {
   color: var(--font-color-primary);
