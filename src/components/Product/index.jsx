@@ -130,20 +130,26 @@ export default function Product({
           )}
         </Col>
       </StyledRow>
-      <StyledRow className="align-items-center mt-4" isLastRow>
+      <StyledRow className={styles.accessoriesRow} isLastRow>
         <Col
           xs={12}
-          md={7}
-          className="d-flex flex-column justify-content-center align-items-center align-items-md-start text-center text-md-start"
+          md={10}
+          className={styles.accessoriesCol}
         >
-          <h5>Related Accessories:</h5>
-          <ul>
-            {
-              relatedAccessories.map((accessory) => (
-                <li key={accessory}>{accessory}</li>
-              ))
-            }
-          </ul>
+          <section className={styles.accessoriesPanel} aria-label="Related accessories">
+            <div className={styles.accessoriesHeader}>
+              <p className={styles.accessoriesEyebrow}>{name}</p>
+              <h5 className={styles.accessoriesTitle}>Related Accessories</h5>
+            </div>
+            <div className={styles.accessoriesGrid}>
+              {relatedAccessories.map((accessory) => (
+                <div key={accessory} className={styles.accessoryChip}>
+                  <span className={styles.accessoryMarker} aria-hidden="true" />
+                  <span className={styles.accessoryText}>{accessory}</span>
+                </div>
+              ))}
+            </div>
+          </section>
         </Col>
       </StyledRow>
     </>
