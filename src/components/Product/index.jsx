@@ -106,21 +106,27 @@ export default function Product({
           </div>
         </Col>
       </StyledRow>
-      <StyledRow className="align-items-center mt-4" isLastRow>
+      <StyledRow className={styles.featuresRow} isLastRow>
         <Col
           xs={12}
-          md={7}
-          className="d-flex flex-column justify-content-center align-items-center align-items-md-start text-center text-md-start"
+          md={10}
+          className={styles.featuresCol}
         >
           {featureList.length > 0 && (
-            <>
-              <h5>Product features:</h5>
-              <ul className="text-start text-md-start">
+            <section className={styles.featuresPanel} aria-label="Product features">
+              <div className={styles.featuresHeader}>
+                <p className={styles.featuresEyebrow}>{name}</p>
+                <h5 className={styles.featuresTitle}>Features</h5>
+              </div>
+              <ul className={styles.featuresTimeline}>
                 {featureList.map((feature) => (
-                  <li key={feature}>{feature}</li>
+                  <li key={feature} className={styles.featureItem}>
+                    <span className={styles.featureDot} aria-hidden="true" />
+                    <span className={styles.featureText}>{feature}</span>
+                  </li>
                 ))}
               </ul>
-            </>
+            </section>
           )}
         </Col>
       </StyledRow>

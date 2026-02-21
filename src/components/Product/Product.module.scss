@@ -92,6 +92,99 @@
   border-radius: 6px;
 }
 
+.featuresRow {
+  margin-top: 2.25rem;
+}
+
+.featuresCol {
+  margin: 0 auto;
+}
+
+.featuresPanel {
+  background: linear-gradient(180deg, #ffffff 0%, #f8f6f4 100%);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 16px;
+  padding: 24px 26px;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.05);
+}
+
+.featuresHeader {
+  margin-bottom: 18px;
+}
+
+.featuresEyebrow {
+  margin: 0;
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: $font-color-primary;
+  font-weight: 700;
+}
+
+.featuresTitle {
+  margin: 4px 0 0;
+  font-size: 1.4rem;
+  color: $black-color-light;
+}
+
+.featuresTimeline {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  position: relative;
+}
+
+.featuresTimeline::before {
+  content: "";
+  position: absolute;
+  top: 2px;
+  bottom: 2px;
+  left: 9px;
+  width: 2px;
+  background: rgba(123, 93, 65, 0.25);
+}
+
+.featureItem {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding-bottom: 16px;
+}
+
+.featureItem:last-child {
+  padding-bottom: 0;
+}
+
+.featureDot {
+  width: 20px;
+  height: 20px;
+  border-radius: 999px;
+  border: 2px solid rgba(123, 93, 65, 0.45);
+  background-color: #ffffff;
+  flex-shrink: 0;
+  margin-top: 2px;
+  position: relative;
+  z-index: 1;
+}
+
+.featureDot::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background-color: $font-color-primary;
+  transform: translate(-50%, -50%);
+}
+
+.featureText {
+  color: rgba(0, 0, 0, 0.76);
+  line-height: 1.6;
+}
+
 @media (max-width: $bp-md) {
   .imageCol {
     padding: 20px 20px 0 20px;
@@ -103,6 +196,32 @@
 
   .actionStack {
     max-width: 100%;
+  }
+
+  .featuresPanel {
+    padding: 20px;
+  }
+
+  .featuresTitle {
+    font-size: 1.25rem;
+  }
+
+  .featuresTimeline::before {
+    left: 8px;
+  }
+
+  .featureItem {
+    gap: 12px;
+  }
+
+  .featureDot {
+    width: 18px;
+    height: 18px;
+  }
+
+  .featureDot::after {
+    width: 7px;
+    height: 7px;
   }
 }
 
@@ -119,6 +238,43 @@
 
   .contentCol {
     padding: 16px;
+  }
+
+  .featuresPanel {
+    padding: 16px;
+    border-radius: 12px;
+  }
+
+  .featuresHeader {
+    margin-bottom: 14px;
+  }
+
+  .featuresTitle {
+    font-size: 1.1rem;
+  }
+
+  .featuresTimeline::before {
+    left: 7px;
+  }
+
+  .featureItem {
+    gap: 10px;
+    padding-bottom: 12px;
+  }
+
+  .featureDot {
+    width: 16px;
+    height: 16px;
+  }
+
+  .featureDot::after {
+    width: 6px;
+    height: 6px;
+  }
+
+  .featureText {
+    font-size: 0.95rem;
+    line-height: 1.5;
   }
 }
 
