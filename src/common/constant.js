@@ -44,8 +44,8 @@ export const NavList = [
     type: NavType.None,
   },
   {
-    title: "Product",
-    link: "/product",
+    title: "Products",
+    link: "/products",
     type: NavType.Dropdown,
     dropdownList: projectDropdownList,
   },

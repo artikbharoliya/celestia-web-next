@@ -16,7 +16,7 @@ function Inspiration() {
         <div className={styles.imageContainer}>
           <Image
             src={'/assets/inspirations/1.jpg'}
-            alt="Lynx plank"
+            alt="Lynx planks installed in mixed exterior soffit configuration"
             style={{ objectFit: 'cover' }}
             fill
             sizes='100vw'
@@ -32,7 +32,7 @@ function Inspiration() {
         <div className={styles.imageContainer}>
           <Image
             src={'/assets/inspirations/3.jpg'}
-            alt="Lynx plank"
+            alt="Arlies in wood finish for collaborative office space"
             style={{ objectFit: 'cover' }}
             fill
             sizes='100vw'
@@ -48,7 +48,7 @@ function Inspiration() {
         <div className={styles.imageContainer}>
           <Image
             src={'/assets/inspirations/4.jpg'}
-            alt="Lynx plank"
+            alt="Arlies ceiling system installed in exterior setting"
             style={{ objectFit: 'cover' }}
             fill
             sizes='100vw'
@@ -64,7 +64,7 @@ function Inspiration() {
         <div className={styles.imageContainer}>
           <Image
             src={'/assets/inspirations/5.jpg'}
-            alt="Lynx plank"
+            alt="Lynx planks over standard lay-in ceiling"
             style={{ objectFit: 'cover' }}
             fill
             sizes='100vw'
@@ -80,7 +80,7 @@ function Inspiration() {
         <div className={styles.imageContainer}>
           <Image
             src={'/assets/inspirations/6.jpg'}
-            alt="Lynx plank"
+            alt="Orion wood print profile without endcaps"
             style={{ objectFit: 'cover' }}
             fill
             sizes='100vw'
@@ -96,7 +96,7 @@ function Inspiration() {
         <div className={styles.imageContainer}>
           <Image
             src={'/assets/inspirations/7.jpg'}
-            alt="Lynx plank"
+            alt="Arlies silver finish ceiling in office space"
             style={{ objectFit: 'cover' }}
             fill
             sizes='100vw'
@@ -112,7 +112,7 @@ function Inspiration() {
         <div className={styles.imageContainer}>
           <Image
             src={'/assets/inspirations/8.jpg'}
-            alt="Lynx plank"
+            alt="Arlies plank system in wood finish"
             style={{ objectFit: 'cover' }}
             fill
             sizes='100vw'

@@ -1,3 +1,5 @@
+import { breadcrumbSchema } from "@/common/seo";
+import Layout from "@/components/Layout";
 import { PhotoGallery } from "@/components/PhotoGallery/PhotoGallery";
 import TitleSection from "@/components/TitleSection";
 
@@ -30,3 +32,20 @@ export default function ProjectPage() {
     </>
   );
 }
+
+ProjectPage.getLayout = function getLayout(page) {
+  return (
+    <Layout
+      pageTitle="Project Gallery"
+      description="View project inspirations and completed architectural installations featuring Celestia Designs ceiling systems."
+      canonicalPath="/projects"
+      ogImage="/assets/projects/1.jpg"
+      jsonLd={breadcrumbSchema([
+        { name: "Home", path: "/" },
+        { name: "Projects", path: "/projects" },
+      ])}
+    >
+      {page}
+    </Layout>
+  );
+};

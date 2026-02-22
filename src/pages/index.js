@@ -24,7 +24,7 @@ export default function Home() {
         <MarketingCopy />
       </Container>
       <Container fluid>
-        <TitleSection title={"Inspirations"} />
+        <TitleSection title={"Inspirations"} titleTag="h2" />
       </Container>
       <Container>
         <Row className="justify-content-center py-5">
@@ -41,10 +41,12 @@ export default function Home() {
 Home.getLayout = function getLayout(page) {
   return (
     <Layout
-      pageTitle="Celestia Designs | Built to last"
+      pageTitle="Built to last"
       description="Since our inception in 2007, Celestia design has been dedicated to crafting products that embody the beauty and complexity of the universe."
+      ogTitle="Celestia Designs | Metal Ceiling and Linear Systems"
+      ogDescription="Explore Celestia Designs metal ceiling, baffle, and linear plank systems engineered for interior and exterior architectural applications."
       ogImage="/assets/Logo.png"
-      ogUrl="https://www.celestiadesign.com/"
+      canonicalPath="/"
     >
       {page}
     </Layout>

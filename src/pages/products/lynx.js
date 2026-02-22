@@ -1,3 +1,5 @@
+import { breadcrumbSchema, productSchema, toMetaDescription } from "@/common/seo";
+import Layout from "@/components/Layout";
 import Product from "@/components/Product";
 import TitleSection from "@/components/TitleSection";
 // Update deatail of product here
@@ -43,6 +45,8 @@ const product = {
   ],
   dataSheet: "/assets/downloads/DataSheets/Lynx.pdf",
 };
+const productPath = "/products/lynx";
+
 export default function Lynx() {
   return (
     <TitleSection
@@ -53,3 +57,30 @@ export default function Lynx() {
     </TitleSection>
   );
 }
+
+Lynx.getLayout = function getLayout(page) {
+  return (
+    <Layout
+      pageTitle="Lynx Metal Linear Circular Edge System"
+      description={toMetaDescription(product.description)}
+      canonicalPath={productPath}
+      ogImage={`/assets/products/${product.image}`}
+      jsonLd={[
+        breadcrumbSchema([
+          { name: "Home", path: "/" },
+          { name: "Products", path: "/products" },
+          { name: product.name, path: productPath },
+        ]),
+        productSchema({
+          name: product.name,
+          description: product.description,
+          image: `/assets/products/${product.image}`,
+          urlPath: productPath,
+          category: product.material,
+        }),
+      ]}
+    >
+      {page}
+    </Layout>
+  );
+};

@@ -44,7 +44,7 @@ export default function Products() {
   return (
     <>
       <div className={styles.productContainer}>
-        <h1 className={styles.productTitle}>Products</h1>
+        <h2 className={styles.productTitle}>Products</h2>
         <Row className={styles.productRow}>
           {products.map((product, index) => (
             <Col className={`my-3 ${styles.productCardContainer}`} key={index}>

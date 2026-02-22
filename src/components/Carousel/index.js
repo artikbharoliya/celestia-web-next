@@ -14,7 +14,7 @@ function ControlledCarousel() {
       <Carousel.Item>
         <Image
           src={'/assets/carousel/2.jpeg'}
-          alt="First slide"
+          alt="Metal ceiling linear panel installation detail"
           width={800}
           height={600}
         />
@@ -26,7 +26,7 @@ function ControlledCarousel() {
       <Carousel.Item>
         <Image
           src={'/assets/carousel/1.jpeg'}
-          alt="First slide"
+          alt="Architectural ceiling system with linear finish"
           width={800}
           height={600}
         />
@@ -38,7 +38,7 @@ function ControlledCarousel() {
       <Carousel.Item>
         <Image
           src={'/assets/carousel/3.jpeg'}
-          alt="First slide"
+          alt="Commercial interior ceiling design with metal planks"
           width={800}
           height={600}
         />

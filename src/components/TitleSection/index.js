@@ -1,15 +1,17 @@
-import Section from "../Section";
 import style from "./TitleSction.module.scss";
 import { Col, Container, Row } from "react-bootstrap";
-export default function TitleSection({ title, subTitle, children }) {
+
+export default function TitleSection({ title, subTitle, titleTag = "h1", children }) {
+  const HeadingTag = titleTag;
+
   return (
     <>
       <div className={`${style.banner}`}>
         <Container>
           <Row className={`${style.bannerContent}`}>
             <Col xl={6}>
-              <div className="text-truncate h1">{title}</div>
-              {subTitle && (<div className="text-truncate text-muted h5">{subTitle}</div>)}
+              <HeadingTag className="text-truncate">{title}</HeadingTag>
+              {subTitle && <p className="text-truncate text-muted h5 mb-0">{subTitle}</p>}
             </Col>
           </Row>
         </Container>

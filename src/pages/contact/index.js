@@ -1,4 +1,5 @@
 
+import { breadcrumbSchema } from '@/common/seo';
 import Layout from '@/components/Layout';
 import TitleSection from '@/components/TitleSection';
 import { useState } from 'react';
@@ -104,7 +105,15 @@ export default function ContactForm() {
 
 ContactForm.getLayout = function getLayout(page) {
   return (
-    <Layout>
+    <Layout
+      pageTitle="Contact Celestia Designs"
+      description="Contact Celestia Designs for product inquiries, technical questions, and project support."
+      canonicalPath="/contact"
+      jsonLd={breadcrumbSchema([
+        { name: "Home", path: "/" },
+        { name: "Contact", path: "/contact" },
+      ])}
+    >
       {page}
     </Layout>
   )

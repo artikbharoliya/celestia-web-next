@@ -1,3 +1,5 @@
+import { breadcrumbSchema, productSchema, toMetaDescription } from "@/common/seo";
+import Layout from "@/components/Layout";
 import Product from "@/components/Product";
 import TitleSection from "@/components/TitleSection";
 // Update deatail of product here
@@ -45,7 +47,9 @@ const product = {
   ],
   dataSheet: "/assets/downloads/DataSheets/Nexis.pdf",
 };
-export default function Lynx() {
+const productPath = "/products/nexis";
+
+export default function Nexis() {
   return (
     <TitleSection
       title={product.name}
@@ -55,3 +59,30 @@ export default function Lynx() {
     </TitleSection>
   );
 }
+
+Nexis.getLayout = function getLayout(page) {
+  return (
+    <Layout
+      pageTitle="Nexis V-Groove Metal Linear System"
+      description={toMetaDescription(product.description)}
+      canonicalPath={productPath}
+      ogImage={`/assets/products/${product.image}`}
+      jsonLd={[
+        breadcrumbSchema([
+          { name: "Home", path: "/" },
+          { name: "Products", path: "/products" },
+          { name: product.name, path: productPath },
+        ]),
+        productSchema({
+          name: product.name,
+          description: product.description,
+          image: `/assets/products/${product.image}`,
+          urlPath: productPath,
+          category: product.material,
+        }),
+      ]}
+    >
+      {page}
+    </Layout>
+  );
+};

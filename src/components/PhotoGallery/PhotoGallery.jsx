@@ -9,21 +9,19 @@ export function PhotoGallery({ photos }) {
       <StackGrid columnWidth={"40%"}>
         {photos?.map((photo, index) => {
           return (
-            <>
-              <div className={styles.photoContainer} horizontal>
-                <Image 
-                  src={photo}
-                  style={{ 
-                    objectFit: 'cover',
-                  }}
-                  fill
-                  sizes='100vw'
-                  height={0}
-                  width={0}
-                  alt=""
-                />
-              </div>
-            </>
+            <div key={`${photo}-${index}`} className={styles.photoContainer} horizontal>
+              <Image 
+                src={photo}
+                style={{ 
+                  objectFit: 'cover',
+                }}
+                fill
+                sizes='100vw'
+                height={0}
+                width={0}
+                alt={`Celestia project installation ${index + 1}`}
+              />
+            </div>
           );
         })}
       </StackGrid>
