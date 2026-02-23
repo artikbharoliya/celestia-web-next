@@ -1,4 +1,5 @@
 import ControlledCarousel from "@/components/Carousel";
+import ContactForm from "@/components/ContactForm";
 import HeroSection from "@/components/HeroSection";
 import Inspirations from "@/components/Inspirations";
 import Layout from "@/components/Layout";
@@ -30,6 +31,18 @@ export default function Home() {
         <Row className="justify-content-center py-5">
           <Col md={12}>
             <Inspirations />
+          </Col>
+        </Row>
+      </Container>
+      <Container fluid>
+        <Row>
+          <Col>
+            <TitleSection title={"Contact Us"} titleTag="h2" />
+          </Col>
+        </Row>
+        <Row className="justify-content-center py-3">
+          <Col md={6}>
+            <ContactForm />
           </Col>
         </Row>
       </Container>

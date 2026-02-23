@@ -1,4 +1,5 @@
 import Head from "next/head";
+import Script from "next/script";
 import { useRouter } from "next/router";
 import Footer from "../Footer";
 import NavBar from "../NavBar";
@@ -39,6 +40,7 @@ export default function Layout({
   const robotsValue = allowIndexing ? "index,follow" : "noindex,nofollow";
   const pageSchemas = Array.isArray(jsonLd) ? jsonLd : jsonLd ? [jsonLd] : [];
   const jsonLdSchemas = [organizationSchema(), websiteSchema(), ...pageSchemas];
+  const recaptchaSiteKey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY;
 
   return (
     <>
@@ -66,6 +68,13 @@ export default function Layout({
           />
         ))}
       </Head>
+      {recaptchaSiteKey && (
+        <Script
+          id="google-recaptcha-v3"
+          src={`https://www.google.com/recaptcha/api.js?render=${recaptchaSiteKey}`}
+          strategy="afterInteractive"
+        />
+      )}
       <NavBar />
       {children}
       <Footer />

@@ -132,16 +132,6 @@ async function verifyRecaptcha(token, req) {
   };
 }
 
-function buildSource(req) {
-  if (typeof req.headers.referer === 'string' && req.headers.referer.length > 0) {
-    return req.headers.referer;
-  }
-
-  const protocol = req.headers['x-forwarded-proto'] || 'https';
-  const host = req.headers.host || '';
-  return `${protocol}://${host}/contact`;
-}
-
 function formatMailError(error) {
   const responseText = typeof error?.response === 'string' ? error.response : '';
 
@@ -223,7 +213,6 @@ export default async function handler(req, res) {
         `Occupation: ${occupation}`,
         `Employer / Company: ${company}`,
         `Submitted At: ${new Date().toISOString()}`,
-        `Source: ${buildSource(req)}`,
         '',
         'Message:',
         message,
