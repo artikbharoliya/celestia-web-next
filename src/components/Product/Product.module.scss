@@ -1,4 +1,4 @@
-@import "../../styles/constants.module.scss";
+@use "../../styles/constants.module.scss" as *;
 
 .heroRow {
   background: linear-gradient(135deg, #ffffff 0%, #faf8f6 100%);

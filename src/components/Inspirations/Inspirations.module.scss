@@ -1,4 +1,4 @@
-@import "../../styles/constants.module.scss";
+@use "../../styles/constants.module.scss" as *;
 
 .captionContainer {
   -webkit-backdrop-filter: blur(14px);
