@@ -1,4 +1,9 @@
+# *
 User-agent: *
 Allow: /
 
+# Host
+Host: https://www.celestiadesign.com
+
+# Sitemaps
 Sitemap: https://www.celestiadesign.com/sitemap.xml

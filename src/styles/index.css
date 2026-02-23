@@ -28,3 +28,10 @@ a {
 .nav-link {
   color: var(--font-color-primary);
 }
+
+.contact-form-theme .form-control:focus,
+.contact-form-theme .form-select:focus {
+  border-color: #7b5d41;
+  box-shadow: 0 0 0 0.2rem rgba(123, 93, 65, 0.2);
+  outline: none;
+}

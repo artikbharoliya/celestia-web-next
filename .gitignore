@@ -36,3 +36,7 @@ yarn-error.log*
 next-env.d.ts
 
 /temp
+
+# generated sitemap files
+/public/sitemap.xml
+/public/sitemap-*.xml
