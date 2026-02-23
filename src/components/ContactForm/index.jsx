@@ -270,7 +270,7 @@ export default function ContactForm() {
         <Button
           variant="primary"
           type="submit"
-          className="mt-3"
+          className="mt-3 contact-form-submit"
           disabled={isSubmitting || !siteKey || !isRecaptchaReady}
         >
           {isSubmitting ? 'Sending...' : 'Submit'}

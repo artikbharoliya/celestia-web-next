@@ -35,3 +35,9 @@ a {
   box-shadow: 0 0 0 0.2rem rgba(123, 93, 65, 0.2);
   outline: none;
 }
+
+@media (max-width: 768px) {
+  .contact-form-submit {
+    width: 100%;
+  }
+}

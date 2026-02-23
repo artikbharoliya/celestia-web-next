@@ -1,0 +1,154 @@
+@import "../../styles/constants.module.scss";
+
+.contactSection {
+  padding: 2.5rem 0 4rem;
+  background:
+    radial-gradient(120% 120% at 0% 0%, rgba(123, 93, 65, 0.08) 0%, rgba(123, 93, 65, 0) 55%),
+    radial-gradient(120% 120% at 100% 100%, rgba(123, 93, 65, 0.06) 0%, rgba(123, 93, 65, 0) 60%);
+}
+
+.infoPanel {
+  height: 100%;
+  border-radius: 22px;
+  padding: 2rem;
+  color: #fff;
+  background: linear-gradient(165deg, #6d4f33 0%, #7b5d41 52%, #9a7a5d 100%);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  box-shadow: 0 20px 48px rgba(57, 38, 22, 0.2);
+}
+
+.kicker {
+  margin: 0;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: 0.72rem;
+  font-weight: 700;
+  opacity: 0.9;
+}
+
+.panelTitle {
+  margin: 0.45rem 0 0;
+  font-size: 2rem;
+  line-height: 1.1;
+}
+
+.panelCopy {
+  margin: 1rem 0 1.4rem;
+  font-size: 0.97rem;
+  opacity: 0.9;
+}
+
+.detailList {
+  display: grid;
+  gap: 0.8rem;
+}
+
+.detailCard {
+  padding: 0.9rem 1rem;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.14);
+  border: 1px solid rgba(255, 255, 255, 0.24);
+}
+
+.copyCard {
+  width: 100%;
+  text-align: left;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+  transition: transform 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.copyCard:hover {
+  transform: translateY(-1px);
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+.copyCard:focus-visible {
+  outline: 2px solid rgba(255, 255, 255, 0.88);
+  outline-offset: 2px;
+}
+
+.detailLabel {
+  margin: 0;
+  font-size: 0.75rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  font-weight: 700;
+  opacity: 0.9;
+}
+
+.detailValue {
+  margin: 0.4rem 0 0;
+  font-style: normal;
+  line-height: 1.5;
+  color: #fff;
+}
+
+.detailLine {
+  display: block;
+}
+
+.copyHint {
+  margin: 0.55rem 0 0;
+  font-size: 0.75rem;
+  opacity: 0.88;
+}
+
+.emailButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1.25rem;
+  // border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  padding-inline: 1rem;
+  color: #fff;
+  font-weight: 600;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.emailButton:hover {
+  color: #fff;
+  background-color: rgba(255, 255, 255, 0.16);
+  border-color: #fff;
+}
+
+.formPanel {
+  height: 100%;
+  border-radius: 22px;
+  border: 1px solid #e4ddd5;
+  background-color: #fff;
+  box-shadow: 0 14px 36px rgba(123, 93, 65, 0.08);
+  padding: 1.5rem;
+}
+
+.formIntro {
+  margin-bottom: 1.2rem;
+  border-color: #e7ddd2;
+  background-color: #faf7f3;
+  color: #40332a;
+}
+
+@media (max-width: $bp-md) {
+  .contactSection {
+    padding: 2rem 0 3rem;
+  }
+
+  .infoPanel,
+  .formPanel {
+    border-radius: 16px;
+  }
+}
+
+@media (max-width: $bp-sm) {
+  .infoPanel,
+  .formPanel {
+    padding: 1.2rem;
+  }
+
+  .panelTitle {
+    font-size: 1.75rem;
+  }
+}
