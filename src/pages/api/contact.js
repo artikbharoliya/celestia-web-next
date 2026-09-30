@@ -9,7 +9,9 @@ const RECAPTCHA_ACTION = 'contact_form_submit';
 const DEFAULT_RECAPTCHA_MIN_SCORE = 0.5;
 const ALLOWED_OCCUPATIONS = new Set([
   'Architect',
+  'Architects',
   'Contractor',
+  'Construction contractors',
   'Installer',
   'Distributor',
   'Sales representative',
