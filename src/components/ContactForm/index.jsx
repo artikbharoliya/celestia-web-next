@@ -150,7 +150,7 @@ export default function ContactForm() {
       }
 
       setSubmitStatus('success');
-      setSubmitMessage(payload.message || 'Message sent successfully.');
+      setSubmitMessage(payload.message || 'Your inquiry has been received. Thank you!');
       setFormData({ name: '', email: '', occupation: '', company: '', message: '', website: '' });
     } catch (error) {
       setSubmitStatus('error');

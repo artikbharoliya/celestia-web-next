@@ -1,4 +1,7 @@
-import nodemailer from 'nodemailer';
+import { randomUUID } from 'node:crypto';
+import { createInquiryStore } from '../../lib/sharepoint.js';
+
+export const config = { maxDuration: 60 };
 
 const MAX_NAME_LENGTH = 100;
 const MAX_EMAIL_LENGTH = 254;
@@ -19,15 +22,13 @@ const ALLOWED_OCCUPATIONS = new Set([
   'Other',
 ]);
 const REQUIRED_ENV_KEYS = [
-  'SMTP_HOST',
-  'SMTP_PORT',
-  'SMTP_USER',
-  'SMTP_PASS',
-  'CONTACT_FROM_EMAIL',
+  'MICROSOFT_TENANT_ID',
+  'MICROSOFT_CLIENT_ID',
+  'MICROSOFT_CLIENT_SECRET',
+  'SHAREPOINT_SITE_ID',
+  'SHAREPOINT_LIST_ID',
   'RECAPTCHA_SECRET_KEY',
 ];
-
-const missingRequiredEnv = REQUIRED_ENV_KEYS.filter((key) => !process.env[key]);
 
 function sanitize(value) {
   return typeof value === 'string' ? value.trim() : '';
@@ -110,6 +111,7 @@ async function verifyRecaptcha(token, req) {
       'Content-Type': 'application/x-www-form-urlencoded',
     },
     body: body.toString(),
+    signal: AbortSignal.timeout(8000),
   });
 
   if (!response.ok) {
@@ -134,34 +136,13 @@ async function verifyRecaptcha(token, req) {
   };
 }
 
-function formatMailError(error) {
-  const responseText = typeof error?.response === 'string' ? error.response : '';
-
-  if (error?.code === 'EAUTH' || error?.responseCode === 535) {
-    return 'SMTP authentication failed. Check SMTP_USER/SMTP_PASS and enable SMTP AUTH for this mailbox.';
-  }
-
-  if (
-    error?.responseCode === 550 ||
-    responseText.toLowerCase().includes('send as denied') ||
-    responseText.toLowerCase().includes('not allowed to send')
-  ) {
-    return 'Sender address is not permitted. CONTACT_FROM_EMAIL must match or be allowed for your SMTP mailbox.';
-  }
-
-  if (error?.code === 'ECONNECTION' || error?.code === 'ETIMEDOUT' || error?.code === 'ESOCKET') {
-    return 'Could not connect to SMTP server. Verify SMTP_HOST/SMTP_PORT and network access.';
-  }
-
-  return 'Unable to send message right now. Please try again later.';
-}
-
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
     res.setHeader('Allow', ['POST']);
     return res.status(405).json({ message: 'Method not allowed' });
   }
 
+  const missingRequiredEnv = REQUIRED_ENV_KEYS.filter((key) => !process.env[key]);
   if (missingRequiredEnv.length > 0) {
     console.error('Missing required contact env vars:', missingRequiredEnv.join(', '));
     return res.status(500).json({ message: 'Service configuration error. Please try again later.' });
@@ -173,6 +154,11 @@ export default async function handler(req, res) {
   }
 
   const { name, email, occupation, company, message, captchaToken } = validation;
+  const inquiry = {
+    name, email, occupation, company, message,
+    reference: randomUUID(),
+    submittedAt: new Date().toISOString(),
+  };
 
   try {
     const recaptcha = await verifyRecaptcha(captchaToken, req);
@@ -186,64 +172,21 @@ export default async function handler(req, res) {
       return res.status(400).json({ message: 'Captcha validation failed. Please try again.' });
     }
 
-    const smtpPort = Number(process.env.SMTP_PORT);
-    if (Number.isNaN(smtpPort) || smtpPort <= 0) {
-      console.error('Invalid SMTP_PORT value for contact form');
-      return res.status(500).json({ message: 'Service configuration error. Please try again later.' });
-    }
-
-    const transporter = nodemailer.createTransport({
-      host: process.env.SMTP_HOST,
-      port: smtpPort,
-      secure: smtpPort === 465,
-      auth: {
-        user: process.env.SMTP_USER,
-        pass: process.env.SMTP_PASS,
-      },
-    });
-    
-    await transporter.sendMail({
-      to: process.env.CONTACT_TO_EMAIL || 'info@celestiadesign.com',
-      from: process.env.CONTACT_FROM_EMAIL,
-      replyTo: email,
-      subject: `New Contact Form Submission - ${name}`,
-      text: [
-        'You received a new contact form submission.',
-        '',
-        `Name: ${name}`,
-        `Email: ${email}`,
-        `Occupation: ${occupation}`,
-        `Employer / Company: ${company}`,
-        `Submitted At: ${new Date().toISOString()}`,
-        '',
-        'Message:',
-        message,
-      ].join('\n'),
-    });
-
-    return res.status(200).json({ message: 'Message sent successfully.' });
+    const store = await createInquiryStore();
+    await store.saveInquiry(inquiry);
   } catch (error) {
-    console.error('Contact form submission failed:', {
+    console.error('Contact inquiry could not be saved', {
+      reference: inquiry.reference,
+      stage: error?.stage,
+      status: error?.status,
       code: error?.code,
-      command: error?.command,
-      responseCode: error?.responseCode,
-      response: error?.response,
-      message: error?.message,
+      requestId: error?.requestId,
     });
-
-    const message = formatMailError(error);
-    if (process.env.NODE_ENV !== 'production') {
-      return res.status(500).json({
-        message,
-        debug: {
-          code: error?.code,
-          command: error?.command,
-          responseCode: error?.responseCode,
-          response: error?.response,
-        },
-      });
-    }
-
-    return res.status(500).json({ message });
+    return res.status(503).json({ message: 'Unable to save your inquiry right now. Please try again later.' });
   }
+
+  return res.status(200).json({
+    message: 'Your inquiry has been received. Thank you!',
+    reference: inquiry.reference,
+  });
 }

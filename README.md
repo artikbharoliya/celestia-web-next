@@ -1,5 +1,15 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
+## Contact form storage
+
+The contact API validates and saves inquiries to Microsoft Lists / SharePoint.
+Your Lists workflow handles email notifications to sales reps. Complete the
+[SharePoint setup guide](docs/sharepoint-inquiries.md) before deploying this change.
+Environment variable names are listed in [`.env.example`](.env.example).
+
+Run `npm run test:contact` to verify submission success and failure handling with
+mocked services (Node.js 22.7+; no live inquiries).
+
 ## Getting Started
 
 First, run the development server:
