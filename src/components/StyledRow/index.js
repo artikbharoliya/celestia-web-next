@@ -1,12 +1,21 @@
 import { Row } from "react-bootstrap";
 
-export default function StyledRow({ children, isLastRow }) {
+// Forward classes and props so the shared product template can style its rows.
+export default function StyledRow({
+  children,
+  isLastRow,
+  className = "",
+  style,
+  ...props
+}) {
   return (
     <Row
+      {...props}
+      className={className}
       style={{
-        padding: 0,
         marginTop: "2.5rem",
         marginBottom: isLastRow ? "2.5rem" : 0,
+        ...style,
       }}
     >
       {children}

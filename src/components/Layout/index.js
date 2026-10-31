@@ -24,19 +24,25 @@ export default function Layout({
   twitterImage = "",
   twitterCard = "summary_large_image",
   jsonLd = null,
-  allowIndexing = true, 
+  allowIndexing = true,
   children,
- }) {
+}) {
   const router = useRouter();
   const currentPath = router?.asPath?.split("?")[0] || "/";
   const canonicalUrl = resolveUrl(canonicalPath || ogUrl || currentPath);
   const resolvedTitle = withSiteName(pageTitle);
-  const resolvedDescription = toMetaDescription(description || DEFAULT_DESCRIPTION);
+  const resolvedDescription = toMetaDescription(
+    description || DEFAULT_DESCRIPTION,
+  );
   const resolvedOgTitle = ogTitle || resolvedTitle;
-  const resolvedOgDescription = toMetaDescription(ogDescription || resolvedDescription);
+  const resolvedOgDescription = toMetaDescription(
+    ogDescription || resolvedDescription,
+  );
   const resolvedOgImage = resolveUrl(ogImage || DEFAULT_OG_IMAGE);
   const resolvedOgUrl = resolveUrl(ogUrl || canonicalPath || currentPath);
-  const resolvedTwitterImage = resolveUrl(twitterImage || ogImage || DEFAULT_OG_IMAGE);
+  const resolvedTwitterImage = resolveUrl(
+    twitterImage || ogImage || DEFAULT_OG_IMAGE,
+  );
   const robotsValue = allowIndexing ? "index,follow" : "noindex,nofollow";
   const pageSchemas = Array.isArray(jsonLd) ? jsonLd : jsonLd ? [jsonLd] : [];
   const jsonLdSchemas = [organizationSchema(), websiteSchema(), ...pageSchemas];
@@ -75,9 +81,16 @@ export default function Layout({
           strategy="afterInteractive"
         />
       )}
+      <a className="skip-link" href="#main-content">
+        Skip to content
+      </a>
       <NavBar />
-      {children}
+      <main id="main-content" tabIndex={-1}>
+        {children}
+      </main>
       <Footer />
     </>
   );
 }
+
+// TODO: Dimension files should be requested

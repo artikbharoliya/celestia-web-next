@@ -1,16 +1,18 @@
-@use "../../styles/constants.module.scss" as *;
-
-.banner {
-    background-color: $grey-secondary;
-    width: 100%;
+.heading {
+  padding-block: clamp(40px, 6vw, 88px) 40px;
 }
-
-.bannerContent{
-    padding: 3rem 0;
+.heading h1,
+.heading h2 {
+  max-width: 70rem;
+  margin: 0;
+  font-size: clamp(2.6rem, 6vw, 6.2rem);
+  font-weight: 300;
+  line-height: 1.08;
+  letter-spacing: -0.06em;
+  overflow-wrap: break-word;
 }
-
-.description {
-    @media (max-width: $bp-sm) {
-    margin-top: 20px;
-    }
+.subtitle {
+  margin: 22px 0 0;
+  color: var(--color-muted);
+  font-size: clamp(1rem, 1.6vw, 1.3rem);
 }

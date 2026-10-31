@@ -5,7 +5,7 @@ import TitleSection from "@/components/TitleSection";
 // Update deatail of product here
 const product = {
   name: "Orion",
-  material: "Metal Linear Sq Edge",
+  material: "Linear baffles",
   description:
     "The Orion Baffle Series redefines design with a seamless blend of acoustic performance, versatile applications, and striking aesthetics. Ideal for interior and exterior use, it is crafted from durable galvanized steel or aluminum, ensuring long-lasting reliability in any environment. Orion offers exceptional flexibility with 10 size and width options, enabling multidimensional configurations that cater to a wide range of architectural visions. Whether installed as horizontal or vertical baffles or utilized as functional louvers, Orion adapts effortlessly to any space.",
   featureList: [

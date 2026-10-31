@@ -25,44 +25,15 @@ const projectDropdownList = [
     type: NavType.None,
   },
 ];
-const documentDropdownList = [
-  {
-    title: "Downloads",
-    link: "/downloads",
-    type: NavType.None,
-  },
-  {
-    title: "Inspiration",
-    link: "/inspiration",
-    type: NavType.None,
-  }
-];
+// The logo links home; About points to the existing homepage introduction.
 export const NavList = [
-  {
-    title: "Home",
-    link: "/",
-    type: NavType.None,
-  },
   {
     title: "Products",
     link: "/products",
     type: NavType.Dropdown,
     dropdownList: projectDropdownList,
   },
-  // {
-  //   title: "Resources",
-  //   link: "",
-  //   type: NavType.Dropdown,
-  //   dropdownList: documentDropdownList,
-  // },
-  {
-    title: "Projects",
-    link: "/projects",
-    type: NavType.None,
-  },
-  {
-    title: "Contact Us",
-    link: "/contact",
-    type: NavType.None,
-  },
+  { title: "Projects", link: "/projects", type: NavType.None },
+  { title: "About", link: "/#about", type: NavType.None },
+  { title: "Contact", link: "/contact", type: NavType.None },
 ];

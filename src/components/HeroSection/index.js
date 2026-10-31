@@ -1,16 +1,26 @@
-import styles from './HeroSection.module.scss';
+import Link from "next/link";
+import styles from "./HeroSection.module.scss";
 
 export default function HeroSection() {
   return (
-    <>
-      <div className={styles.heroContainer}>
-        <div >
-          <h1>Celestia Designs</h1>
-        </div>
-        <div >
-          <p>Since our inception in 2007, Celestia design has been dedicated to crafting products that embody the beauty and complexity of the universe.</p>
-        </div>
+    <div className={styles.heroHeading}>
+      <h1>
+        Precision above.
+        <br />
+        Possibility beyond.
+      </h1>
+      <div className={styles.introduction}>
+        <p>
+          Architectural metal systems.
+          <br />
+          Designed for possibility.
+          <br />
+          Made in India since 2007.
+        </p>
+        <Link href="/products" className="text-link">
+          Explore systems <span aria-hidden="true">↗</span>
+        </Link>
       </div>
-    </>
+    </div>
   );
 }

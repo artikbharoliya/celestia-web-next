@@ -5,7 +5,7 @@ import TitleSection from "@/components/TitleSection";
 // Update deatail of product here
 const product = {
   name: "Lynx",
-  material: "Metal Linear Circular Edge",
+  material: "Round-edge metal linear system",
   description:
     "Lynx product gives look of smooth rounded plank with open to plenum look or revel can be conceled with filler strip. This feature of open plenum can be implimented to increase acoustical function, also to increase airflow and ventilation above the ceiling. The product is available in galvanized steel or aluminum and is suitable for exterior and interior as well as exterior installation. The product can be installed in flat horizontal or vertical and sloped ceilings. Product is offered in powdercoated finish in solid RAL colors or wood veneer print. Wood print option gives look and feel of a true wood without mantainace and downsides like warping, cracing or rot if exposed to mosture. Additionally Lynx planks can be finished on both sides for a low hight ceiling use. ",
   featureList: [

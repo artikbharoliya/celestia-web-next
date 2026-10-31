@@ -3,155 +3,127 @@ import Image from "next/image";
 import { useState } from "react";
 import { Col, Modal } from "react-bootstrap";
 import Button from "@/components/Button";
-import FileIcon from "/public/assets/ico/file-download.svg";
-import styles from './Product.module.scss';
+import styles from "./Product.module.scss";
 
 export default function Product({
   name,
   image,
   material,
   description,
-  featureList,
+  featureList = [],
   installLayout,
   dimensionDrawings,
-  relatedAccessories,
-  dataSheet
+  relatedAccessories = [],
+  dataSheet,
 }) {
-
-  const [showModal, setShowModal] = useState(false);
+  const [showDrawings, setShowDrawings] = useState(false);
   return (
     <>
-      <Modal show={showModal} onHide={() => setShowModal(false)}>
+      {/* Document links keep their original file URLs and readable file names. */}
+      <Modal
+        show={showDrawings}
+        onHide={() => setShowDrawings(false)}
+        aria-labelledby="drawings-title"
+        centered
+      >
         <Modal.Header closeButton>
-          <Modal.Title>Drawings</Modal.Title>
+          <Modal.Title id="drawings-title">
+            {name} / Dimension drawings
+          </Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          {Array.isArray(dimensionDrawings) && dimensionDrawings.length > 0 ? (
-            <ul>
-              {dimensionDrawings.map((drawing) => {
-                const fileName = drawing.split('/').pop();
-                return (
-                  <li key={drawing} className={styles.downloadLink}>
-                    <Image src={FileIcon} alt="Download file icon" width={18} height={18} />
-                    <a href={drawing} download target="_blank" rel="noopener noreferrer">
-                      {fileName}
-                    </a>
-                  </li>
-                );
-              })}
-            </ul>
-          ) : (
-            <p>No dimension drawings available.</p>
-          )}
+          <ul className={styles.downloadList}>
+            {Array.isArray(dimensionDrawings) &&
+              dimensionDrawings.map((drawing) => (
+                <li key={drawing}>
+                  <a href={drawing} download>
+                    <span>{drawing.split("/").pop()}</span>
+                    <span aria-hidden="true">↓</span>
+                  </a>
+                </li>
+              ))}
+          </ul>
         </Modal.Body>
       </Modal>
       <StyledRow className={styles.heroRow}>
-        <Col xs={12} md={5} className={styles.imageCol}>
-          <div className={styles.imageCard}>
-            <div className={styles.imageFrame}>
-              <Image
-                src={`/assets/products/${image}`}
-                alt={name}
-                fill
-                sizes="(max-width: 768px) 100vw, 50vw"
-                className={styles.productImage}
-              />
-            </div>
+        <Col xs={12} md={6} className={styles.imageCol}>
+          <div className={styles.imageFrame}>
+            <Image
+              src={`/assets/products/${image}`}
+              alt={`${name} — ${material} profile`}
+              fill
+              sizes="(max-width: 767px) 90vw, (max-width: 1600px) 44vw, 720px"
+              priority
+            />
           </div>
         </Col>
-        <Col xs={12} md={7} className={styles.contentCol}>
-          <div className={styles.meta}>
-            <h2 className={styles.productName}>{name}</h2>
-            {material && <div className={styles.material}>{material}</div>}
-          </div>
-          <p className={styles.descriptionText}>{description}</p>
-          <div className={styles.actionStack}>
+        <Col xs={12} md={6} className={styles.contentCol}>
+          <p className="eyebrow">01 / System overview</p>
+          <h2 className={styles.material}>{material}</h2>
+          <p className={styles.description}>{description}</p>
+          <div className={styles.actions}>
             {dataSheet && (
-              <a download href={dataSheet} className={styles.actionLink}>
-                <Button variant="primary" className={styles.actionButton}>
-                  Download Data Sheet
-                </Button>
+              <a download href={dataSheet}>
+                Download data sheet <span aria-hidden="true">↓</span>
               </a>
             )}
             {installLayout && (
-              <a download href={installLayout} className={styles.actionLink}>
-                <Button variant="primary" className={styles.actionButton}>
-                  Install Layout
-                </Button>
+              <a download href={installLayout}>
+                Download installation layout <span aria-hidden="true">↓</span>
               </a>
             )}
-            {dimensionDrawings && (
-              <Button
-                variant="primary"
-                className={styles.actionButton}
-                onClick={() => {
-                  if (Array.isArray(dimensionDrawings)) {
-                    setShowModal(true);
-                    console.log(dimensionDrawings);
-                    console.log("Clicked Dimension Drawings Button");
-                  } else {
-                    console.log("Single file dimensionDrawings");
-                    const link = document.createElement('a');
-                    link.href = dimensionDrawings;
-                    link.download = dimensionDrawings.split('/').pop();
-                    document.body.appendChild(link);
-                    link.click();
-                    document.body.removeChild(link);
-                  }
-                }}
-              >
-                Dimension Drawings
-              </Button>
+            {Array.isArray(dimensionDrawings) &&
+            dimensionDrawings.length > 0 ? (
+              <button type="button" onClick={() => setShowDrawings(true)}>
+                View dimension drawings <span aria-hidden="true">↗</span>
+              </button>
+            ) : (
+              typeof dimensionDrawings === "string" && (
+                <a download href={dimensionDrawings}>
+                  Download dimension drawing <span aria-hidden="true">↓</span>
+                </a>
+              )
             )}
           </div>
         </Col>
       </StyledRow>
-      <StyledRow className={styles.featuresRow} isLastRow>
-        <Col
-          xs={12}
-          md={10}
-          className={styles.featuresCol}
+      {featureList.length > 0 && (
+        <section
+          className={`page-section ${styles.detailSection}`}
+          aria-labelledby="features-heading"
         >
-          {featureList.length > 0 && (
-            <section className={styles.featuresPanel} aria-label="Product features">
-              <div className={styles.featuresHeader}>
-                <p className={styles.featuresEyebrow}>{name}</p>
-                <h5 className={styles.featuresTitle}>Features</h5>
-              </div>
-              <ul className={styles.featuresTimeline}>
-                {featureList.map((feature) => (
-                  <li key={feature} className={styles.featureItem}>
-                    <span className={styles.featureDot} aria-hidden="true" />
-                    <span className={styles.featureText}>{feature}</span>
-                  </li>
-                ))}
-              </ul>
-            </section>
-          )}
-        </Col>
-      </StyledRow>
-      <StyledRow className={styles.accessoriesRow} isLastRow>
-        <Col
-          xs={12}
-          md={10}
-          className={styles.accessoriesCol}
-        >
-          <section className={styles.accessoriesPanel} aria-label="Related accessories">
-            <div className={styles.accessoriesHeader}>
-              <p className={styles.accessoriesEyebrow}>{name}</p>
-              <h5 className={styles.accessoriesTitle}>Related Accessories</h5>
-            </div>
-            <div className={styles.accessoriesGrid}>
-              {relatedAccessories.map((accessory) => (
-                <div key={accessory} className={styles.accessoryChip}>
-                  <span className={styles.accessoryMarker} aria-hidden="true" />
-                  <span className={styles.accessoryText}>{accessory}</span>
-                </div>
-              ))}
-            </div>
-          </section>
-        </Col>
-      </StyledRow>
+          <div>
+            <p className="eyebrow">02 / Specifications</p>
+            <h2 id="features-heading" className="section-title">
+              Product features.
+            </h2>
+          </div>
+          <ol className={styles.features}>
+            {featureList.map((feature) => (
+              <li key={feature}>{feature}</li>
+            ))}
+          </ol>
+        </section>
+      )}
+      {relatedAccessories.length > 0 && (
+        <section className="page-section" aria-labelledby="accessories-heading">
+          <p className="eyebrow">03 / The complete system</p>
+          <h2 id="accessories-heading" className="section-title">
+            Related accessories.
+          </h2>
+          <ul className={styles.accessories}>
+            {relatedAccessories.map((accessory) => (
+              <li key={accessory}>{accessory}</li>
+            ))}
+          </ul>
+        </section>
+      )}
+      <div className={styles.inquiry}>
+        <p>Discuss {name} for your next project.</p>
+        <Button as="a" href="/contact">
+          Start a conversation <span aria-hidden="true">↗</span>
+        </Button>
+      </div>
     </>
   );
 }

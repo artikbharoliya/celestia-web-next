@@ -26,7 +26,10 @@ export default function ProjectPage() {
   ];
   return (
     <>
-      <TitleSection title={"Projects"}>
+      <TitleSection
+        title="Architecture, in application."
+        subTitle="Explore installations featuring Celestia architectural systems."
+      >
         <PhotoGallery photos={photos} />
       </TitleSection>
     </>

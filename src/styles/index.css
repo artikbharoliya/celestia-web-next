@@ -1,47 +1,225 @@
 @import "~bootstrap/dist/css/bootstrap.min.css";
+
+/* Precision Grid: shared colors, typography and spacing for every page. */
+:root {
+  --color-paper: #f7f5f0;
+  --color-surface: #efede6;
+  --color-ink: #232321;
+  --color-muted: #68675f;
+  --color-accent: #565d35;
+  --color-rule: #c9c6be;
+  --site-gutter: clamp(20px, 4vw, 64px);
+  --section-space: clamp(56px, 7vw, 112px);
+  --font-color-primary: var(--color-accent);
+  --bs-body-font-family: "Inter", Arial, sans-serif;
+  --bs-body-bg: var(--color-paper);
+  --bs-body-color: var(--color-ink);
+  --bs-border-color: var(--color-rule);
+  --bs-border-radius: 0;
+  --bs-border-radius-lg: 0;
+  --bs-link-color: var(--color-accent);
+  --bs-link-hover-color: var(--color-ink);
+}
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 24px;
+}
 body {
   margin: 0;
-  font-family: "Montserrat", sans-serif;
-  --font-color-primary: #7b5d41;
-  padding: 0;
+  font-family: var(--bs-body-font-family);
+  -webkit-font-smoothing: antialiased;
 }
-
+::selection {
+  color: var(--color-paper);
+  background: var(--color-accent);
+}
+img {
+  max-width: 100%;
+}
 a {
+  color: inherit;
   text-decoration: none;
-  color: var(--font-color-primary);
+}
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+a,
+button {
+  -webkit-tap-highlight-color: transparent;
+}
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 5px;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 400;
+  letter-spacing: -0.045em;
+}
+p {
+  line-height: 1.7;
 }
 
+/* One fluid editorial grid replaces Bootstrap's stepped container widths. */
+.container {
+  width: calc(100% - var(--site-gutter) * 2);
+  max-width: 1500px;
+  margin-inline: auto;
+  padding-inline: 0;
+}
+.page-section {
+  padding-block: var(--section-space);
+  border-top: 1px solid var(--color-rule);
+}
+.eyebrow {
+  margin: 0 0 24px;
+  color: var(--color-muted);
+  font-size: 0.7rem;
+  line-height: 1.5;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+.section-title {
+  font-size: clamp(2rem, 3.5vw, 3.75rem);
+  line-height: 1.12;
+  margin: 0;
+}
+.section-heading {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 36px;
+}
+.section-heading .eyebrow {
+  margin: 0;
+}
+.text-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  width: fit-content;
+  padding-bottom: 7px;
+  border-bottom: 1px solid var(--color-rule);
+  font-size: 0.85rem;
+  color: var(--color-accent);
+  transition:
+    border-color 180ms ease,
+    color 180ms ease;
+}
+.text-link:hover {
+  color: var(--color-ink);
+  border-color: var(--color-ink);
+}
+.text-link span[aria-hidden] {
+  font-size: 1.1em;
+}
+.split-section {
+  display: grid;
+  grid-template-columns: 1fr 1.65fr;
+  gap: clamp(32px, 6vw, 100px);
+}
+.section-intro {
+  margin: 24px 0 32px;
+  max-width: 30rem;
+  font-size: 0.95rem;
+  color: var(--color-muted);
+}
+.skip-link {
+  position: fixed;
+  top: 12px;
+  left: 20px;
+  z-index: 2000;
+  padding: 12px 20px;
+  background: var(--color-ink);
+  color: #fff;
+  transform: translateY(-160%);
+}
+.skip-link:focus {
+  transform: translateY(0);
+  color: #fff;
+}
 .btn-primary {
-  /* Bootstrap button color overrides */
-  --bs-btn-color: #fff;
-  --bs-btn-bg: #7b5d41;
-  --bs-btn-border-color: #6d4f33;
-  --bs-btn-hover-color: #fff;
-  --bs-btn-hover-bg: #98795d;
-  --bs-btn-hover-border-color: #98795d;
-  --bs-btn-active-bg: #6d4f33;
-  --bs-btn-active-border-color: #6d4f33;
-  /* --bs-btn-disabled-color: ;
-  --bs-btn-disabled-bg: ;
-  --bs-btn-disabled-border-color: ; */
+  --bs-btn-color: var(--color-ink);
+  --bs-btn-bg: transparent;
+  --bs-btn-border-color: var(--color-ink);
+  --bs-btn-hover-color: var(--color-paper);
+  --bs-btn-hover-bg: var(--color-ink);
+  --bs-btn-hover-border-color: var(--color-ink);
+  --bs-btn-active-color: var(--color-paper);
+  --bs-btn-active-bg: var(--color-ink);
+  --bs-btn-active-border-color: var(--color-ink);
+  --bs-btn-disabled-color: var(--color-muted);
+  --bs-btn-disabled-bg: transparent;
+  --bs-btn-disabled-border-color: var(--color-rule);
 }
-.nav-link {
-  color: var(--font-color-primary);
+.btn {
+  border-radius: 0;
+  padding: 13px 22px;
+  font-size: 0.85rem;
 }
-
-.contact-form-theme .form-control:focus,
-.contact-form-theme .form-select:focus {
-  border-color: #7b5d41;
-  box-shadow: 0 0 0 0.2rem rgba(123, 93, 65, 0.2);
-  outline: none;
+.alert {
+  border-radius: 0;
+  font-size: 0.9rem;
 }
-
-@media (max-width: 768px) {
-  .contact-form-submit {
-    width: 100%;
+.modal-content {
+  background: var(--color-paper);
+  border-radius: 0;
+}
+.modal-title {
+  font-size: 1.5rem;
+}
+.modal-header,
+.modal-footer {
+  border-color: var(--color-rule);
+}
+.grecaptcha-badge {
+  visibility: hidden;
+}
+@media (max-width: 767px) {
+  .split-section {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  .section-heading {
+    gap: 16px;
+    margin-bottom: 28px;
+  }
+  .section-heading .text-link {
+    font-size: 0.7rem;
+    gap: 12px;
+  }
+}
+/* Respect the same motion preference in CSS and the carousel's timer. */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
   }
 }
 
-.grecaptcha-badge {
-  visibility: hidden;
+/* Keep keyboard focus visible on Bootstrap's interactive controls too. */
+.btn:focus-visible,
+.navbar-toggler:focus-visible,
+.btn-close:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 5px;
+  box-shadow: none;
 }
