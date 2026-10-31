@@ -77,6 +77,60 @@ for (const path of pages) {
   });
 }
 
+test("project gallery reveals captions without moving the grid", async ({
+  page,
+}, testInfo) => {
+  await page.goto("/projects");
+  const projects = page.locator("main figure");
+  const first = projects.first();
+  const description = first.locator("figcaption p");
+  const photo = first.getByRole("img");
+  await first.scrollIntoViewIfNeeded();
+  await photo.evaluate((image) => image.decode());
+  await page.evaluate(() => document.fonts.ready);
+  const nextPosition = await projects.nth(3).boundingBox();
+  const hasHover = await page.evaluate(
+    () => matchMedia("(hover: hover) and (pointer: fine)").matches,
+  );
+
+  if (hasHover) {
+    await expect(description).toHaveCSS("opacity", "0");
+    await photo.hover();
+    await expect(description).toHaveCSS("opacity", "1");
+    await expect(photo).toHaveCSS(
+      "transform",
+      "matrix(1.04, 0, 0, 1.04, 0, 0)",
+    );
+    const afterHover = await projects.nth(3).boundingBox();
+    expect(afterHover.y).toBeCloseTo(nextPosition.y, 1);
+    await page.mouse.move(0, 0);
+    await expect(description).toHaveCSS("opacity", "0");
+    await first.focus();
+    await expect(description).toHaveCSS("opacity", "1");
+    await page.keyboard.press("Tab");
+    await expect(projects.nth(1)).toBeFocused();
+    await expect(projects.nth(1).locator("figcaption p")).toHaveCSS(
+      "opacity",
+      "1",
+    );
+    await first.focus();
+  } else {
+    // Touch visitors can read the copy without needing a hover gesture.
+    await expect(description).toHaveCSS("opacity", "1");
+    await expect(photo).toHaveCSS("transform", "none");
+  }
+
+  await page.addStyleTag({ content: "nextjs-portal { display: none; }" });
+  await page.screenshot({
+    path: testInfo.outputPath("gallery-interaction.png"),
+    animations: "disabled",
+  });
+
+  await page.emulateMedia({ reducedMotion: "reduce" });
+  await expect(photo).toHaveCSS("transform", "none");
+  await expect(description).toHaveCSS("opacity", "1");
+});
+
 test("navigation works with keyboard and on small screens", async ({
   page,
 }) => {
