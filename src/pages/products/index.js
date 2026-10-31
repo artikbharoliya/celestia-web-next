@@ -6,8 +6,13 @@ import TitleSection from "@/components/TitleSection";
 export default function ProductsPage() {
   return (
     <>
-      <TitleSection title={"All Products"}>
-        <Products />
+      <TitleSection
+        title="Systems for considered spaces."
+        subTitle="Explore our metal linear ceiling and baffle systems."
+      >
+        <div className="page-section">
+          <Products headingTag="h2" />
+        </div>
       </TitleSection>
     </>
   );

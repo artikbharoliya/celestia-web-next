@@ -1,13 +1,17 @@
-@use "../../styles/constants.module.scss" as *;
-
-
-.copy {
-  text-align: justify;
-  padding: 24px 48px 24px 36px;
-  border-left: 2px solid $font-color-primary;
+.about {
+  align-items: start;
 }
-
-.copyContainer {
-  margin: 40px 0;
-  
+.copy {
+  max-width: 46rem;
+}
+.copy p:first-child {
+  font-size: clamp(1.3rem, 2vw, 2rem);
+  font-weight: 300;
+  line-height: 1.5;
+  letter-spacing: -0.025em;
+}
+.copy p:last-child {
+  margin: 24px 0 0;
+  color: var(--color-muted);
+  font-size: 0.95rem;
 }

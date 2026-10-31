@@ -5,7 +5,7 @@ import TitleSection from "@/components/TitleSection";
 // Update deatail of product here
 const product = {
   name: "Nexis",
-  material: "V-Groove Metal linear",
+  material: "V-groove metal linear system",
   description:
     "Nexis features a sleek V-Groove edge with concealed reveals, making it an ideal solution for subtly hiding elements above the ceiling, such a decking, pluming, air ducts, lighting, and cables. Constructed from galvanized steel or aluminum, it offers a cost effective, durable option suitable for both interior and exterior installations.The product supports versatile installation configuration, where thin and thick planks can be mixed in staggered pattern to give a more unique look to ceilings. Product support diverse install such as vertical, sloped and can also be installed in exterior of the building. For non-continuous ceiling installations, Nexis can be finished with cloud trim for a clean and professional appearance. Available in powder-coated finishes, Nexis offers a choice of solid RAL color or wood veneer prints, delivering the aesthetic appeal of natural wood without maintenance challenges, Unlike traditional wood, the wood-look finish resists warping, cracking, and rot even in high-moisture environments*. Whether for a clean, minimalist interior or a functional exterior, Nexis provides a durable, visually appealing ceiling solution tailored to your design needs.",
   featureList: [
@@ -41,7 +41,7 @@ const product = {
     "CC - Cloud Trim Clip"
   ],
   dimensionDrawings: [
-    "/assets/downloads/DimensionDrawings/NEXIS - Related Accessories 1.pdf",
+    "/assets/downloads/DimensionDrawings/NEXIS - Related Accessories.pdf",
     "/assets/downloads/DimensionDrawings/NEXIS - V GROVE METAL LINEAR SYSTEM.pdf",
 
   ],

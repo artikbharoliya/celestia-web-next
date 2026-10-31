@@ -40,3 +40,9 @@ next-env.d.ts
 # generated sitemap files
 /public/sitemap.xml
 /public/sitemap-*.xml
+
+# Local verification tools and generated review screenshots
+/.cache/
+/test-results/
+/playwright-report/
+/artifacts/

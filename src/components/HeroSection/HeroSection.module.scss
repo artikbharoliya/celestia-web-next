@@ -1,7 +1,50 @@
-.heroContainer {
+.heroHeading {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  align-items: end;
+  gap: 32px;
+  padding-block: clamp(40px, 5vw, 76px) 40px;
+  h1 {
+    margin: 0;
+    font-size: clamp(3rem, 6.6vw, 7rem);
+    font-weight: 300;
+    line-height: 1.04;
+    letter-spacing: -0.065em;
+  }
+}
+.introduction {
+  padding-bottom: 6px;
+}
+.introduction p {
+  margin-bottom: 24px;
+  font-size: clamp(0.8rem, 1vw, 1rem);
+  line-height: 1.6;
+}
+// Stack the supporting copy before it can squeeze the main headline.
+@media (max-width: 991px) {
+  .heroHeading {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+  .heroHeading h1 {
+    font-size: clamp(2.6rem, 8vw, 5rem);
+  }
+  .introduction {
     display: flex;
+    align-items: end;
+    justify-content: space-between;
+    gap: 20px;
+  }
+  .introduction p {
+    margin: 0;
+  }
+}
+@media (max-width: 420px) {
+  .heroHeading h1 {
+    font-size: 2.45rem;
+  }
+  .introduction {
+    align-items: start;
     flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
-    height: 100%;
+  }
 }

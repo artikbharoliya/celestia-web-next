@@ -5,7 +5,7 @@ import TitleSection from "@/components/TitleSection";
 // Update deatail of product here
 const product = {
   name: "Arlies",
-  material: "Metal Linear Sq Edge",
+  material: "Square-edge metal linear system",
   description:
     "Arlies features a sleek square-edge design with concealed reveals, making it an ideal solution for subtly hiding elements above the ceiling, such as decking, plumbing, air ducts, lighting, and cables. Constructed from galvanized steel or aluminum, it offers a cost-effective, durable option suitable for both interior and exterior installations.",
   featureList: [
@@ -44,7 +44,7 @@ const product = {
     "/assets/downloads/DimensionDrawings/ARLIES - Dimensional Drawing - 12-5-2024.pdf",
     "/assets/downloads/DimensionDrawings/ARLIES - METAL LINEAR SYSTEM SQUARE.pdf",
     "/assets/downloads/DimensionDrawings/ARLIES - Related Accessories.pdf",
-    "/assets/downloads/DimensionDrawings/ARLIES - ARLIES CLOUD TRIM DETAIL.pdf",
+    "/assets/downloads/DimensionDrawings/ARLIES CLOUD TRIM DETAIL.pdf",
   ],
   dataSheet: "/assets/downloads/DataSheets/Arlies.pdf",
 };

@@ -1,98 +1,139 @@
-import { RiArrowDownWideLine } from "@remixicon/react";
-import styles from "./NavBar.module.scss";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-
-import Container from "react-bootstrap/Container";
-import Nav from "react-bootstrap/Nav";
+import { useRouter } from "next/router";
 import Navbar from "react-bootstrap/Navbar";
-import { useEffect, useState } from "react";
 import { NavList, NavType } from "@/common/constant";
+import styles from "./NavBar.module.scss";
 
-const NavIem = ({ item, toggleSubmenu, submenuOpen }) => {
-  if (item.type === NavType.Dropdown) {
-    return (
-      <li
-        key={item.title}
-        className={`${styles.menuItem} ${styles.menuItemHasChildren}`}
-      >
-        <div
-          onClick={(e) => {
-            e.preventDefault();
-            toggleSubmenu(item.title);
-          }}
-          className={`${styles.dropDownItem}`}
-        >
-          {item.title}{" "}
-          <RiArrowDownWideLine
-            className={`${styles.downArrow} ${item.title === submenuOpen ? styles.upArrow : ""
-              }`}
-          />
-        </div>
-        <ul
-          className={`${styles.subMenu} ${item.title === submenuOpen ? styles.active : ""
-            }`}
-        >
-          {item.dropdownList.map((subItem, subIndex) => (
-            <li key={subIndex} className={styles.menuItem}>
-              <Link href={subItem.link}>{subItem.title}</Link>
-            </li>
-          ))}
-        </ul>
-      </li>
-    );
-  } else {
-    return (
-      <li key={item.title} className={styles.menuItem}>
-        <Link href={item.link}>{item.title}</Link>
-      </li>
-    );
-  }
-};
 export default function NavBar() {
-  const [submenuOpen, setSubmenuOpen] = useState(null);
-  const mediaSize = 991;
+  const [expanded, setExpanded] = useState(false);
+  const [productsOpen, setProductsOpen] = useState(false);
+  const navigation = useRef(null);
+  const productToggle = useRef(null);
+  const router = useRouter();
 
-  const toggleSubmenu = (title) => {
-    setSubmenuOpen((prev) => (prev === title ? null : title));
+  useEffect(() => {
+    // Close menus after a route or About-anchor change, including mobile navigation.
+    setExpanded(false);
+    setProductsOpen(false);
+  }, [router.asPath]);
+
+  useEffect(() => {
+    const closeOutside = (event) => {
+      if (!navigation.current?.contains(event.target)) {
+        setProductsOpen(false);
+        setExpanded(false);
+      }
+    };
+    document.addEventListener("pointerdown", closeOutside);
+    return () => document.removeEventListener("pointerdown", closeOutside);
+  }, []);
+
+  const closeMenus = () => {
+    setExpanded(false);
+    setProductsOpen(false);
   };
-
-  const collapseSubMenu = () => {
-    setSubmenuOpen(null);
-  };
-
-  const resizeFix = () => {
-    if (window.innerWidth > mediaSize) {
-      collapseSubMenu();
+  const handleEscape = (event) => {
+    if (event.key !== "Escape") return;
+    if (productsOpen) {
+      setProductsOpen(false);
+      productToggle.current?.focus();
+    } else {
+      setExpanded(false);
+      navigation.current?.querySelector(".navbar-toggler")?.focus();
     }
   };
 
-  useEffect(() => {
-    window.addEventListener("resize", resizeFix);
-    return () => window.removeEventListener("resize", resizeFix);
-  }, []);
   return (
-    <Navbar expand="lg">
-      <Container>
-        <Navbar.Brand>
-          <Link href="/">
-            <Image src="/assets/Logo.png" alt="Logo" width={200} height={100} />
-          </Link>
-        </Navbar.Brand>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className={`ms-auto ${styles.navLinkContainer}`}>
-            {NavList.map((item, index) => (
-              <NavIem
-                key={index}
-                item={item}
-                toggleSubmenu={toggleSubmenu}
-                submenuOpen={submenuOpen}
-              />
+    <Navbar
+      ref={navigation}
+      expand="lg"
+      expanded={expanded}
+      onToggle={setExpanded}
+      className={styles.navigation}
+      aria-label="Main navigation"
+      onKeyDown={handleEscape}
+    >
+      <div className={`container ${styles.inner}`}>
+        <Link
+          href="/"
+          aria-label="Celestia Designs home"
+          className={styles.brand}
+          onClick={closeMenus}
+        >
+          <Image
+            src="/assets/Logo.png"
+            alt="Celestia Design"
+            width={112}
+            height={64}
+            priority
+          />
+        </Link>
+        <Navbar.Toggle
+          aria-controls="main-navigation"
+          label="Toggle navigation"
+        />
+        <Navbar.Collapse id="main-navigation" className={styles.collapse}>
+          <ul className={styles.links}>
+            {NavList.map((item) => (
+              <li
+                key={item.title}
+                className={styles.item}
+                onBlur={(event) => {
+                  if (!event.currentTarget.contains(event.relatedTarget))
+                    setProductsOpen(false);
+                }}
+              >
+                <div className={styles.linkRow}>
+                  <Link
+                    href={item.link}
+                    onClick={closeMenus}
+                    aria-current={
+                      router.pathname === item.link ? "page" : undefined
+                    }
+                  >
+                    {item.title}
+                  </Link>
+                  {item.type === NavType.Dropdown && (
+                    <button
+                      ref={productToggle}
+                      type="button"
+                      className={styles.dropdownToggle}
+                      aria-label="Toggle product links"
+                      aria-expanded={productsOpen}
+                      aria-controls="product-links"
+                      onClick={() => setProductsOpen(!productsOpen)}
+                    >
+                      <span aria-hidden="true">{productsOpen ? "−" : "+"}</span>
+                    </button>
+                  )}
+                </div>
+                {item.type === NavType.Dropdown && (
+                  <ul
+                    id="product-links"
+                    className={styles.dropdown}
+                    hidden={!productsOpen}
+                  >
+                    <li>
+                      <Link href="/products" onClick={closeMenus}>
+                        All systems <span aria-hidden="true">↗</span>
+                      </Link>
+                    </li>
+                    {item.dropdownList.map((product) => (
+                      <li key={product.title}>
+                        <Link href={product.link} onClick={closeMenus}>
+                          {product.title}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </li>
             ))}
-          </Nav>
+          </ul>
         </Navbar.Collapse>
-      </Container>
+      </div>
     </Navbar>
   );
 }

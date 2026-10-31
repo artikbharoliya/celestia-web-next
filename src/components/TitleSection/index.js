@@ -1,22 +1,22 @@
-import style from "./TitleSction.module.scss";
-import { Col, Container, Row } from "react-bootstrap";
+import styles from "./TitleSction.module.scss";
 
-export default function TitleSection({ title, subTitle, titleTag = "h1", children }) {
-  const HeadingTag = titleTag;
-
+export default function TitleSection({
+  title,
+  subTitle,
+  titleTag = "h1",
+  children,
+}) {
+  const Heading = titleTag;
   return (
     <>
-      <div className={`${style.banner}`}>
-        <Container>
-          <Row className={`${style.bannerContent}`}>
-            <Col xl={6}>
-              <HeadingTag className="text-truncate">{title}</HeadingTag>
-              {subTitle && <p className="text-truncate text-muted h5 mb-0">{subTitle}</p>}
-            </Col>
-          </Row>
-        </Container>
-      </div>
-      <Container>{children}</Container>
+      <header className={`container ${styles.heading}`}>
+        <p className="eyebrow">
+          Celestia Designs / Architectural metal systems
+        </p>
+        <Heading>{title}</Heading>
+        {subTitle && <p className={styles.subtitle}>{subTitle}</p>}
+      </header>
+      {children && <div className="container">{children}</div>}
     </>
   );
 }

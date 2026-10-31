@@ -1,131 +1,39 @@
-import { useState } from 'react';
-import Carousel from 'react-bootstrap/Carousel';
-import Image from 'next/image';
-import styles from './Inspirations.module.scss';
+import Image from "next/image";
+import Link from "next/link";
+import styles from "./Inspirations.module.scss";
 
-function Inspiration() {
-  const [index, setIndex] = useState(0);
-
-  const handleSelect = (selectedIndex) => {
-    setIndex(selectedIndex);
-  };
-
+export default function Inspirations() {
   return (
-    <Carousel activeIndex={index} onSelect={handleSelect}>
-      <Carousel.Item>
-        <div className={styles.imageContainer}>
+    <section
+      className={`page-section ${styles.application}`}
+      aria-labelledby="applications-heading"
+    >
+      <div>
+        <p className="eyebrow">02 / In application</p>
+        <h2 id="applications-heading" className="section-title">
+          Designed into
+          <br />
+          the experience
+          <br />
+          of a space.
+        </h2>
+        <Link href="/projects" className="text-link">
+          View projects <span aria-hidden="true">↗</span>
+        </Link>
+      </div>
+      <figure className={styles.figure}>
+        <div className={styles.imageFrame}>
           <Image
-            src={'/assets/inspirations/1.jpg'}
-            alt="Lynx planks installed in mixed exterior soffit configuration"
-            style={{ objectFit: 'cover' }}
+            src="/assets/inspirations/3.jpg"
+            alt="Wood-look linear ceiling with integrated lights above a collaborative office"
             fill
-            sizes='100vw'
-            width={0}
-            height={0}
+            sizes="(max-width: 767px) 90vw, (max-width: 1600px) 60vw, 960px"
           />
         </div>
-        <Carousel.Caption className={styles.captionContainer}>
-          <p>Lynx Planks, installed in mix configuration in exterior soffit</p>
-        </Carousel.Caption>
-      </Carousel.Item>
-      <Carousel.Item>
-        <div className={styles.imageContainer}>
-          <Image
-            src={'/assets/inspirations/3.jpg'}
-            alt="Arlies in wood finish for collaborative office space"
-            style={{ objectFit: 'cover' }}
-            fill
-            sizes='100vw'
-            width={0}
-            height={0}
-          />
-        </div>
-        <Carousel.Caption className={styles.captionContainer}>
-          <p>Arlies in wood finish for collaborative office space</p>
-        </Carousel.Caption>
-      </Carousel.Item>
-      <Carousel.Item>
-        <div className={styles.imageContainer}>
-          <Image
-            src={'/assets/inspirations/4.jpg'}
-            alt="Arlies ceiling system installed in exterior setting"
-            style={{ objectFit: 'cover' }}
-            fill
-            sizes='100vw'
-            width={0}
-            height={0}
-          />
-        </div>
-        <Carousel.Caption className={styles.captionContainer}>
-          <p>Arlies installed in exterior setting</p>
-        </Carousel.Caption>
-      </Carousel.Item>
-      <Carousel.Item>
-        <div className={styles.imageContainer}>
-          <Image
-            src={'/assets/inspirations/5.jpg'}
-            alt="Lynx planks over standard lay-in ceiling"
-            style={{ objectFit: 'cover' }}
-            fill
-            sizes='100vw'
-            width={0}
-            height={0}
-          />
-        </div>
-        <Carousel.Caption className={styles.captionContainer}>
-          <p>Lynx over standard layin ceiling</p>
-        </Carousel.Caption>
-      </Carousel.Item>
-      <Carousel.Item>
-        <div className={styles.imageContainer}>
-          <Image
-            src={'/assets/inspirations/6.jpg'}
-            alt="Orion wood print profile without endcaps"
-            style={{ objectFit: 'cover' }}
-            fill
-            sizes='100vw'
-            width={0}
-            height={0}
-          />
-        </div>
-        <Carousel.Caption className={styles.captionContainer}>
-          <p>Orion in wood print without endcaps.</p>
-        </Carousel.Caption>
-      </Carousel.Item>
-      <Carousel.Item>
-        <div className={styles.imageContainer}>
-          <Image
-            src={'/assets/inspirations/7.jpg'}
-            alt="Arlies silver finish ceiling in office space"
-            style={{ objectFit: 'cover' }}
-            fill
-            sizes='100vw'
-            width={0}
-            height={0}
-          />
-        </div>
-        <Carousel.Caption className={styles.captionContainer}>
-          <p>Arlies silver finish in office</p>
-        </Carousel.Caption>
-      </Carousel.Item>
-      <Carousel.Item>
-        <div className={styles.imageContainer}>
-          <Image
-            src={'/assets/inspirations/8.jpg'}
-            alt="Arlies plank system in wood finish"
-            style={{ objectFit: 'cover' }}
-            fill
-            sizes='100vw'
-            width={0}
-            height={0}
-          />
-        </div>
-        <Carousel.Caption className={styles.captionContainer}>
-          <p>Arlies plank in wood finish</p>
-        </Carousel.Caption>
-      </Carousel.Item>
-    </Carousel>
+        <figcaption>
+          Arlies / Wood-look finish / Collaborative workspace
+        </figcaption>
+      </figure>
+    </section>
   );
 }
-
-export default Inspiration;

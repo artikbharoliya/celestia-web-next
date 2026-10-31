@@ -1,33 +1,46 @@
-import styles from './Footer.module.scss';
-import globalStyles from '../../styles/globals.module.scss';
-import Image from 'next/image';
-import { Col, Container, Row, Stack } from 'react-bootstrap';
-import Link from 'next/link';
+import Image from "next/image";
+import Link from "next/link";
+import styles from "./Footer.module.scss";
 
 export default function Footer() {
   return (
-    <>
-      <footer className={styles.footerContainer}>
-        <Container>
-          <Row>
-            <Col md={8} xs={12}>
+    <footer className={styles.footer}>
+      <div className="container">
+        <div className={styles.top}>
+          <div>
+            <Link href="/" aria-label="Celestia Designs home">
               <Image
                 src="/assets/Logo.png"
-                alt="Logo"
-                width={200}
-                height={100}
+                alt="Celestia Design"
+                width={112}
+                height={64}
+                className={styles.logo}
               />
-            </Col>
-            <Col md={4} xs={12}>
-              <Stack gap={3}>
-                <Link href="/">Home</Link>
-                <Link href="/contact">Contact Us</Link>
-                {/* <Link href="/about">About Us</Link> */}
-              </Stack>
-            </Col>
-          </Row>
-        </Container>
-      </footer>
-    </>
+            </Link>
+            <p className={styles.description}>
+              Architectural metal systems.
+              <br />
+              Precision in every line.
+            </p>
+          </div>
+          <nav aria-label="Footer navigation" className={styles.links}>
+            <Link href="/products">Products</Link>
+            <Link href="/projects">Projects</Link>
+            <Link href="/#about">About</Link>
+            <Link href="/contact">Contact</Link>
+          </nav>
+          <div className={styles.contact}>
+            <p className="eyebrow">Start a conversation</p>
+            <a href="mailto:info@celestiadesign.com">
+              info@celestiadesign.com <span aria-hidden="true">↗</span>
+            </a>
+          </div>
+        </div>
+        <div className={styles.bottom}>
+          <span>© {new Date().getFullYear()} Celestia Designs</span>
+          <span>Built to last.</span>
+        </div>
+      </div>
+    </footer>
   );
 }

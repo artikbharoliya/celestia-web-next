@@ -1,30 +1,38 @@
-@use "../../styles/constants.module.scss" as *;
-
-.captionContainer {
-  -webkit-backdrop-filter: blur(14px);
-  backdrop-filter: blur(14px);
-  border-radius: 6px;
-  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
-  padding: 0.5rem 0.5rem;
+.application {
+  display: grid;
+  grid-template-columns: 1fr 2.1fr;
+  gap: 40px;
+  align-items: start;
 }
-
-.imageContainer {
+.application h2 {
+  margin-bottom: 36px;
+  font-size: clamp(1.9rem, 3.2vw, 3.3rem);
+}
+.figure {
+  margin: 0;
+}
+.imageFrame {
   position: relative;
-  width: 100%;
-  margin-left: auto;
-  margin-right: auto;
-  height: 800px;
-  
-  @media (max-width: $bp-lg) {
-    height: 700px;
+  aspect-ratio: 1.65 / 1;
+  background: var(--color-surface);
+}
+.imageFrame img {
+  object-fit: cover;
+}
+.figure figcaption {
+  margin-top: 12px;
+  font-size: 0.65rem;
+  color: var(--color-muted);
+}
+@media (max-width: 767px) {
+  .application {
+    grid-template-columns: 1fr;
+    gap: 28px;
   }
-  
-  @media (max-width: $bp-md) {
-    height: 600px;
+  .application h2 br {
+    display: none;
   }
-  
-  @media (max-width: $bp-sm) {
-    height: 550px;
- 
+  .imageFrame {
+    aspect-ratio: 4 / 3;
   }
 }

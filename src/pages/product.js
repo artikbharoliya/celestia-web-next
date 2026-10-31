@@ -11,10 +11,9 @@ export default function ProductLegacyPage() {
   }, [router]);
 
   return (
-    <main style={{ padding: "2rem 1rem" }}>
+    <div className="container page-section">
       <p>
-        This page has moved.{" "}
-        <Link href="/products">Go to Products</Link>.
+        This page has moved. <Link href="/products">Go to Products</Link>.
       </p>
       <noscript>
         <p>
@@ -22,7 +21,7 @@ export default function ProductLegacyPage() {
           <Link href="/products">Products</Link>.
         </p>
       </noscript>
-    </main>
+    </div>
   );
 }
 

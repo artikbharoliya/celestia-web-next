@@ -1,50 +1,77 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Celestia Designs
+
+A Next.js Pages Router website for Celestia architectural metal systems. The
+Precision Grid design uses shared colors and spacing, Inter typography, original
+photography, and React Bootstrap for navigation, forms, the carousel, and dialogs.
+
+## Development
+
+Use Node.js 22.7 or newer. Install dependencies with `npm install`, then run
+`npm run dev`. Open http://localhost:3000.
+
+`npm run build` creates the production build and sitemap. Run it locally with
+`npx next start`. Vercel uses its standard Next.js build and deployment settings.
+
+## Editing the design
+
+- **Colors, typography, spacing:** the variables at the top of
+  `src/styles/index.css` control the shared theme, gutters, and section spacing.
+  `src/styles/constants.module.scss` retains Sass breakpoint values and aliases to
+  those shared colors. Component-specific styles live beside each component.
+- **Fonts:** `src/pages/_document.js` loads Inter from Google Fonts with
+  `display=swap`. Keep the font family in `src/styles/index.css` in sync.
+- **Homepage:** `src/pages/index.js` arranges the hero, systems, application image,
+  About section, and full inquiry form. The About navigation link uses `/#about`.
+- **Hero images and captions:** edit the `slides` array in
+  `src/components/Carousel/index.js`. Keep each image, visible caption, and
+  alternative text together. Autoplay uses a seven-second interval and pauses on
+  hover, keyboard focus, or the pause button. Reduced motion disables autoplay
+  and transitions; arrows and touch navigation remain available.
+- **Product summaries:** edit the four entries in
+  `src/components/Products/index.js`; the homepage and catalog share this grid.
+  Full specifications and document paths remain in `src/pages/products/` and use
+  the shared `src/components/Product/` template.
+- **Project photography:** the projects page lists all 18 image paths. Its gallery
+  uses CSS for three desktop columns, two tablet columns, and one mobile column.
+  Installation numbers identify images without inventing project names.
+- **Contact details:** edit `CONTACT_DETAILS` in `src/pages/contact/index.js`.
+  `src/components/ContactForm/` supplies the same form on the homepage and contact
+  page, including visible labels, verification, and success/error messages.
+
+Use original assets under `public/assets/`. Product images are contained rather
+than cropped so the complete technical profiles stay visible. Architecture photos
+use intentional crops within responsive frames. Generated design concepts are
+references only and are not website assets.
 
 ## Contact form storage
 
-The contact API validates and saves inquiries to Microsoft Lists / SharePoint.
-Your Lists workflow handles email notifications to sales reps. Complete the
-[SharePoint setup guide](docs/sharepoint-inquiries.md) before deploying this change.
-Environment variable names are listed in [`.env.example`](.env.example).
+The API validates inquiries and saves them to Microsoft Lists / SharePoint.
+Your Lists workflow handles notifications to sales reps. Complete the
+[SharePoint setup guide](docs/sharepoint-inquiries.md) and use the variable names in
+[`.env.example`](.env.example). Keep real credentials in `.env.local` and Vercel,
+never in source control. This redesign adds no environment settings or list fields.
 
-Run `npm run test:contact` to verify submission success and failure handling with
-mocked services (Node.js 22.7+; no live inquiries).
+## Verification
 
-## Getting Started
-
-First, run the development server:
-
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+```sh
+npm run test:contact
+npm run lint
+npm run build
+npm run test:ui
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+The contact tests mock external services. Playwright browser checks cover all
+pages on desktop, tablet, and mobile, navigation, carousel autoplay/pause, reduced
+motion, downloads, and inquiry success/failure. Browser checks use a dummy site
+key and mock reCAPTCHA and `/api/contact`; they do not create live inquiries.
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+If Chromium is not installed, download it with `npx playwright install chromium`.
+For repository-only tool storage, set `PLAYWRIGHT_BROWSERS_PATH` to
+`$PWD/.cache/browsers` for both installation and browser checks. Set `TMPDIR` to
+`$PWD/.cache/tmp` and `npm_config_cache` to `$PWD/.cache/npm` to keep temporary files
+and npm downloads here too; create those directories first.
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
-
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+`npm run test:ui` starts its own development server on port 3100. Run it separately
+from a production build because both use Next.js's `.next` directory. Browser
+screenshots are saved in `test-results/`; optional review copies go in `artifacts/`.
+Both directories and local tool caches are ignored by Git.
