@@ -31,9 +31,13 @@ Use Node.js 22.7 or newer. Install dependencies with `npm install`, then run
   `src/components/Products/index.js`; the homepage and catalog share this grid.
   Full specifications and document paths remain in `src/pages/products/` and use
   the shared `src/components/Product/` template.
-- **Project photography:** the projects page lists all 18 image paths. Its gallery
+- **Project photography:** `src/pages/projects/index.js` pairs all 18 image paths
+  with alternative text and short descriptions based on the visible details. Its gallery
   uses CSS for three desktop columns, two tablet columns, and one mobile column.
-  Installation numbers identify images without inventing project names.
+  Mouse hover or keyboard focus gently zooms the photo and reveals its description
+  below it, with space reserved to keep the grid steady. Touch devices always show
+  descriptions; reduced motion disables the zoom. Installation numbers identify
+  images without inventing project names.
 - **Contact details:** edit `CONTACT_DETAILS` in `src/pages/contact/index.js`.
   `src/components/ContactForm/` supplies the same form on the homepage and contact
   page, including visible labels, verification, and success/error messages.
